@@ -38,6 +38,7 @@ public class MainAdapter extends BaseQuickAdapter<MovieBean, BaseViewHolder> {
             public void onClick(View view) {
                 //ToastUtils.showToast(mContext,helper.getLayoutPosition()+"");
                 ToastUtils.showToast(mContext,item.getMovieMagnet());
+                //测试修改
             }
         });
     }
