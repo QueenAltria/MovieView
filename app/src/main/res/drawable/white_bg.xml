@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <!-- 圆角 shape="rectangle"是使用 默认为1dp -->
+    <corners
+        android:bottomLeftRadius="1dp"
+        android:bottomRightRadius="1dp"
+        android:topLeftRadius="1dp"
+        android:topRightRadius="1dp"/>
+    <!-- 填充 -->
+    <solid android:color="#FCFCFC"/>
+    <!-- 描边 -->
+    <stroke
+        android:width=".5dp"
+        android:color="#FCFCFC"/>
+    <!-- 渐变 -->
+    <!--angle的值必须是45的倍数（包括0），仅在type="linear"有效-->
+    <!--<gradient-->
+        <!--android:angle="0"-->
+        <!--android:centerColor="color"-->
+        <!--android:centerX="0"-->
+        <!--android:centerY="0"-->
+        <!--android:endColor="color"-->
+        <!--android:gradientRadius="0"-->
+        <!--android:startColor="color"-->
+        <!--android:type="linear"/>-->
+</shape>

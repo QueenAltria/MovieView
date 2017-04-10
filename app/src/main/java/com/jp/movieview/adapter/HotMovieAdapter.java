@@ -16,7 +16,7 @@ import java.util.List;
  * Created by jp on 2017/4/5.
  */
 public class HotMovieAdapter extends BaseQuickAdapter<HotMovie, BaseViewHolder> {
-    public static final String TAG = "MainAdapter";
+    public static final String TAG = "HotMovieAdapter";
 
     public HotMovieAdapter(List<HotMovie> data) {
         super(R.layout.hotmovie_item, data);
