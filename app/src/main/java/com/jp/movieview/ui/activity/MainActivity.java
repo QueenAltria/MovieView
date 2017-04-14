@@ -1,4 +1,4 @@
-package com.jp.movieview.view;
+package com.jp.movieview.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,9 +19,9 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jp.movieview.R;
-import com.jp.movieview.adapter.MainAdapter;
 import com.jp.movieview.bean.MovieBean;
 import com.jp.movieview.callback.JsonCallBack;
+import com.jp.movieview.ui.adapter.MainAdapter;
 import com.jp.movieview.utils.LogUtils;
 
 import com.jp.movieview.utils.ToastUtils;
@@ -34,7 +33,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,37 +46,28 @@ public class MainActivity extends AppCompatActivity
 
     public static final String TAG="MainActivity";
 
-    RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;
 
+    private int page=1;
+    private MainAdapter adapter;
+    private boolean isErr=true;
+    private int mCurrentCounter;
 
-    int page=1;
-    MainAdapter adapter;
-    boolean isErr=true;
-    int mCurrentCounter;
-
-    private static int TOTAL_COUNTER = 0;
+    private static int TOTAL_COUNTER = 0;  //总条数
 
     String name="你的名字";
 
-    private static final int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 10;  //每页条数
     DrawerLayout drawer;
-    protected static final String EXTRA_KEY_TEXT = "text";
-    private static final String EXTRA_KEY_VERSION = "version";
-    private static final String EXTRA_KEY_THEME = "theme";
-    private static final String EXTRA_KEY_VERSION_MARGINS = "version_margins";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        setSupportActionBar(toolbar);
-
-
-
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler);
 
-
+        setSupportActionBar(toolbar);
 
         final List<MovieBean> list=new ArrayList<>();
 
@@ -90,35 +79,47 @@ public class MainActivity extends AppCompatActivity
                 .execute(new JsonCallBack<String>(MainActivity.this) {
                     @Override
                     public void onSuccess(String result, Call call, Response response) {
-                        Date time1=new Date();
-                        long time2 = time1.getTime();
+
                         Document doc = Jsoup.parse(result);
                         //Elements company = doc.select("a[href]");
-                        Elements company = doc.select("div.T1");
+                        Elements titles = doc.select("div.T1");
+                        Elements canshu = doc.select("dl.BotInfo");
+                        Elements num = doc.select("div.rststat");
+                        Elements resultLinks = doc.select("[href^=thunder]");
+                        Elements lianjie = doc.select("div.dInfo");
+
                         String title;
                         String uri;
+                        String thunder;
+                        String magnet;
 
-                        for(Element e : company) {
+                        for(Element e : num) {
+                            LogUtils.e(TAG,getNumPattern(e.text()));
+                            ToastUtils.showToast(MainActivity.this,getNumPattern(e.text()));
+                            TOTAL_COUNTER=Integer.parseInt(getNumPattern(e.text()));
+                        }
 
-                            title = e.select("a").text();
-                            uri = e.select("a").attr("href");
-                            LogUtils.e(TAG,title+uri);
-                            list.add(new MovieBean(title,uri));
+                        for(int i=0;i<titles.size();i++){
+                            title = titles.get(i).select("a").text();
+                            uri = titles.get(i).select("a").attr("href");
+                            thunder=resultLinks.get(i).select("a").attr("href");
+                            magnet=lianjie.get(i).select("a").attr("href");
 
+                            MovieBean bean=new MovieBean();
+                            bean.setMovieName(title);
+                            bean.setMovieUrl(uri);
+                            bean.setMovieMagnet(magnet);
+                            list.add(bean);
                         }
 
                         List<String[]> xiangxi=new ArrayList<>();
-
-                        Elements canshu = doc.select("dl.BotInfo");
                         for(Element e : canshu) {
                             String s1=e.select("dt").text();
                             s1.replace(" ","");
                             String[] split = s1.split(" ");
-
                             xiangxi.add(split);
                             LogUtils.e(TAG,s1);
                         }
-
                         for (int i=0;i<xiangxi.size();i++){
                             list.get(i).setMovieSize(xiangxi.get(i)[1]);
                             list.get(i).setMovieNum(xiangxi.get(i)[4]);
@@ -126,65 +127,18 @@ public class MainActivity extends AppCompatActivity
                             list.get(i).setMovieHot(xiangxi.get(i)[10]);
                         }
 
-                        Elements num = doc.select("div.rststat");
-                        for(Element e : num) {
-                            LogUtils.e(TAG,getNumPattern(e.text()));
-                            ToastUtils.showToast(MainActivity.this,getNumPattern(e.text()));
-                            TOTAL_COUNTER=Integer.parseInt(getNumPattern(e.text()));
-                        }
-
-                        List<String> magnet=new ArrayList<String>();
-                        Elements lianjie = doc.select("div.dInfo");
-                        for(Element e : lianjie) {
-                            String s1=e.select("a").attr("href");
-                            magnet.add(s1);
-                            LogUtils.e(TAG,s1);
-
-                            //LogUtils.e(TAG,e.text());
-                        }
-
-
-                        Elements resultLinks = doc.select("[href^=thunder]");
-                        for(Element e : resultLinks) {
-                            String s1=e.select("a").attr("href");
-
-                            LogUtils.e(TAG,s1);
-
-                            //LogUtils.e(TAG,e.text());
-                        }
-
-                        for (int i=0;i<magnet.size();i++){
-                            list.get(i).setMovieMagnet(magnet.get(i));
-                        }
-
-
-
                         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                         mRecyclerView.setLayoutManager(manager);
                         //adapter=new MainAdapter(list);
                         adapter.setNewData(list);
                         //adapter.openLoadAnimation(new RecyclerAnimation());
-                        adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+                        adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
                         mRecyclerView.setAdapter(adapter);
-                        Date time3=new Date();
-                        long time4 = time3.getTime();
-                        LogUtils.e(TAG,"时间"+(time4-time2));
 
                         mCurrentCounter = adapter.getData().size();
 
-//                        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-//                            @Override
-//                            public void onLoadMoreRequested() {
-//
-//
-//                            }
-//                        },mRecyclerView);
-
-
                     }
                 });
-
-
 
 //        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
@@ -222,13 +176,9 @@ public class MainActivity extends AppCompatActivity
 //        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab.setOnClickListener(view ->
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+                .setAction("Action", null).show());
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -322,31 +272,47 @@ public class MainActivity extends AppCompatActivity
                 .execute(new JsonCallBack<String>(MainActivity.this) {
                     @Override
                     public void onSuccess(String result, Call call, Response response) {
+
                         Document doc = Jsoup.parse(result);
                         //Elements company = doc.select("a[href]");
-                        Elements company = doc.select("div.T1");
+                        Elements titles = doc.select("div.T1");
+                        Elements canshu = doc.select("dl.BotInfo");
+                        Elements num = doc.select("div.rststat");
+                        Elements resultLinks = doc.select("[href^=thunder]");
+                        Elements lianjie = doc.select("div.dInfo");
 
+                        String title;
+                        String uri;
+                        String thunder;
+                        String magnet;
 
-                        for(Element e : company) {
+                        for(Element e : num) {
+                            LogUtils.e(TAG,getNumPattern(e.text()));
+                            ToastUtils.showToast(MainActivity.this,getNumPattern(e.text()));
+                            TOTAL_COUNTER=Integer.parseInt(getNumPattern(e.text()));
+                        }
 
-                            String title = e.select("a").text();
-                            String uri = e.select("a").attr("href");
-                            title.replace("@","\\@");
-                            list1.add(new MovieBean(title,uri));
+                        for(int i=0;i<titles.size();i++){
+                            title = titles.get(i).select("a").text();
+                            uri = titles.get(i).select("a").attr("href");
+                            thunder=resultLinks.get(i).select("a").attr("href");
+                            magnet=lianjie.get(i).select("a").attr("href");
+
+                            MovieBean bean=new MovieBean();
+                            bean.setMovieName(title);
+                            bean.setMovieUrl(uri);
+                            bean.setMovieMagnet(magnet);
+                            list1.add(bean);
                         }
 
                         List<String[]> xiangxi=new ArrayList<>();
-
-                        Elements canshu = doc.select("dl.BotInfo");
                         for(Element e : canshu) {
                             String s1=e.select("dt").text();
                             s1.replace(" ","");
                             String[] split = s1.split(" ");
-
                             xiangxi.add(split);
-                            LogUtils.e("jiang",s1+"--------大小");
+                            LogUtils.e(TAG,s1);
                         }
-
                         for (int i=0;i<xiangxi.size();i++){
                             list1.get(i).setMovieSize(xiangxi.get(i)[1]);
                             list1.get(i).setMovieNum(xiangxi.get(i)[4]);
@@ -354,21 +320,13 @@ public class MainActivity extends AppCompatActivity
                             list1.get(i).setMovieHot(xiangxi.get(i)[10]);
                         }
 
+
+
                         adapter.addData(list1);
                         mCurrentCounter = adapter.getData().size();
                         adapter.loadMoreComplete();
                     }
                 });
-
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-//        list1.add(new MovieBean("aaa","bbb"));
-
 
         return list1;
     }
@@ -376,8 +334,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
-
 
     }
 
@@ -402,13 +358,10 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        }
 
-
         if (adapter.getData().size() < PAGE_SIZE) {
             adapter.loadMoreEnd(false);
-
         } else {
             if (mCurrentCounter >= TOTAL_COUNTER) {
-
 //                    pullToRefreshAdapter.loadMoreEnd();//default visible
                 adapter.loadMoreEnd(false);//true is gone,false is visible
             } else {
@@ -419,7 +372,6 @@ public class MainActivity extends AppCompatActivity
                     isErr = true;
                     Toast.makeText(MainActivity.this, "请求失败", Toast.LENGTH_LONG).show();
                     adapter.loadMoreFail();
-
                 }
             }
         }

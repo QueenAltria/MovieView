@@ -4,6 +4,7 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
     <android.support.v7.widget.CardView
+        android:foreground="?attr/selectableItemBackground"
         android:id="@+id/card"
         android:layout_margin="5dp"
         android:layout_width="match_parent"

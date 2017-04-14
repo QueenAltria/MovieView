@@ -1,4 +1,4 @@
-package com.jp.movieview.adapter;
+package com.jp.movieview.ui.adapter;
 
 import android.view.View;
 
@@ -28,19 +28,17 @@ public class MainAdapter extends BaseQuickAdapter<MovieBean, BaseViewHolder> {
     protected void convert(final BaseViewHolder helper, final MovieBean item) {
         helper.setText(R.id.name, item.getMovieName())
                 .setText(R.id.url, item.getMovieUrl())
-                .setText(R.id.size,"大小:"+item.getMovieSize())
-                .setText(R.id.hot,"访问热度:"+item.getMovieHot())
-                .setText(R.id.time,"创建日期:"+item.getMovieTime())
-                .setText(R.id.num,"文件数:"+item.getMovieNum());
+                .setText(R.id.size, "大小:" + item.getMovieSize())
+                .setText(R.id.hot, "访问热度:" + item.getMovieHot())
+                .setText(R.id.time, "创建日期:" + item.getMovieTime())
+                .setText(R.id.num, "文件数:" + item.getMovieNum());
 
         helper.getView(R.id.card).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //ToastUtils.showToast(mContext,helper.getLayoutPosition()+"");
-                ToastUtils.showToast(mContext,item.getMovieMagnet());
-                //测试修改
+                ToastUtils.showToast(mContext, item.getMovieMagnet());
             }
         });
     }
-
 }

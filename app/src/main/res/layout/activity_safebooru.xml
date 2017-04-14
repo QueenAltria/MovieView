@@ -1,17 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_safebooru"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jp.movieview.view.YandeActivity">
+    android:fitsSystemWindows="false"
+    android:orientation="vertical"
+    tools:context="com.jp.movieview.ui.activity.YandeActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/safe_recycler"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="2.5dp"
-        android:paddingRight="2.5dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|enterAlways"/>
+
+        <!--<android.support.design.widget.TabLayout-->
+            <!--app:theme="@style/ButtonTheme"-->
+            <!--android:background="@color/colorWhite"-->
+            <!--app:tabTextColor="@color/colorPrimary"-->
+            <!--app:tabSelectedTextColor="@color/colorWhite"-->
+            <!--app:tabIndicatorColor="@color/colorTrans"-->
+            <!--android:id="@+id/tabs"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
+
+        <LinearLayout
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+            <LinearLayout
+                android:id="@+id/left"
+                android:background="@drawable/tab_bg"
+                android:focusable="true"
+                android:clickable="true"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chevron_left_teal_500_24dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Before"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/right"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="@drawable/tab_bg"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="After"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chevron_right_teal_500_24dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/safe_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="2.5dp"
+            android:paddingRight="2.5dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

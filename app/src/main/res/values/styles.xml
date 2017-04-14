@@ -11,6 +11,7 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -29,6 +30,16 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:imeOptions">actionSearch</item>
+    </style>
+
+    <style name="Title" parent="Theme.Design.NoActionBar">
+        <item name="actionMenuTextColor">#ffffff</item>
+        <!-- 设置Menu菜单的背景色 -->
+        <item name="android:itemBackground">@android:color/white</item>
+        <!-- 设置Menu菜单的字体颜色 -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <!-- 设置Menu窗口不覆盖Toolbar视图 -->
+        <item name="overlapAnchor">true</item>
     </style>
 
 </resources>

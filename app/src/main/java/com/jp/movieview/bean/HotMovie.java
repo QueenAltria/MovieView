@@ -4,7 +4,6 @@ package com.jp.movieview.bean;
  * Created by jp on 2017/4/7.
  */
 public class HotMovie {
-    public static final String TAG = "HotMovie";
 
     String url;
     String name;

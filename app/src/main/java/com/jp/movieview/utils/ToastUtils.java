@@ -22,7 +22,6 @@ public class ToastUtils {
         }
         mToast.setGravity(Gravity.CENTER , 0, 0);
         mToast.show();
-
     }
 
 

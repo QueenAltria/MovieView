@@ -1,8 +1,10 @@
-package com.jp.movieview.adapter;
+package com.jp.movieview.ui.adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.CardView;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,8 +16,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.jp.movieview.R;
 import com.jp.movieview.bean.YandeBean;
+import com.jp.movieview.ui.activity.PhotoViewActivity;
 import com.jp.movieview.utils.LogUtils;
 import com.jp.movieview.utils.ToastUtils;
+import com.jp.movieview.widget.RatioImageView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +30,12 @@ import java.util.Map;
  */
 public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
     public static final String TAG = "SafebooruAdapter";
-    Map<Integer, Integer> imageHeightMap = new HashMap<>();
-    int imageWidth;
-    String url;
-    CardView card;
+
+    private Map<Integer, Integer> imageHeightMap = new HashMap<>();
+    private int imageWidth;
+    private String url;
+    private int position;
+
 
     public YandeAdapter(List<YandeBean> data) {
         super(R.layout.safebooru_item, data);
@@ -42,44 +48,47 @@ public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
     @Override
     protected void convert(final BaseViewHolder helper, final YandeBean item) {
 
-        helper.setText(R.id.content_text,item.getName()+"\n"+item.getSize());
-        card=helper.getView(R.id.card);
-        card.setVisibility(View.GONE);
+        helper.setIsRecyclable(false);
+        helper.setText(R.id.content_text, item.getName() + "\n" + item.getSize());
+        RatioImageView view = helper.getView(R.id.safe_img);
         url = item.getPreview_url();
 
-        LogUtils.e(TAG, "----->" + url);
-        ImageView view = helper.getView(R.id.safe_img);
+        view.setOriginalSize(item.getWidth(), item.getHeight());
+        //Glide.with(mContext).load("http:"+url).placeholder(R.drawable.white_bg).into(view);
+        Glide.with(mContext).load(url).placeholder(R.drawable.white_bg).into(view);
+        //LogUtils.e(TAG,url);
 
-        helper.setIsRecyclable(false);
+        helper.getConvertView().setOnClickListener(view1 -> {
+                    //ToastUtils.showToast(mContext, item.getSrc_url());
+                    Intent intent = new Intent(mContext, PhotoViewActivity.class);
+                    intent.putExtra("url", item.getRealUrl());
+                    String[] split = item.getSrc_url().split("/");
+                    String id = split[split.length - 1];
+                    intent.putExtra("id", id);
+                    intent.putStringArrayListExtra("tags",item.getTagList());
+                    mContext.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext).toBundle());
+                }
+        );
 
-        //Glide.with(mContext).load(url).placeholder(R.drawable.white_bg).into(view);
+        position = helper.getLayoutPosition();
 
-
-        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ToastUtils.showToast(mContext,item.getSrc_url());
-            }
-        });
-
-        int position = helper.getLayoutPosition();
-
-        if (!this.imageHeightMap.containsKey(position)) {
-            //当首次加载图片时，调用 loadImageFirst()，保存图片高度
-            loadImageFirst(view, position);
-
-        } else {
-            //非首次加载，直接根据保存的长宽，获取图片
-            Glide.with(this.mContext)
-                    .load(url)
-                    .crossFade()
-                    .override(imageWidth,imageHeightMap.get(position))
-                    .into(view);
-            card.setVisibility(View.VISIBLE);
-        }
-
+//        if (!this.imageHeightMap.containsKey(position)) {
+//            //当首次加载图片时，调用 loadImageFirst()，保存图片高度
+//            loadImageFirst(view, position);
+//
+//        } else {
+//            //非首次加载，直接根据保存的长宽，获取图片
+//            Glide.with(this.mContext)
+//                    .load(url)
+//                    .crossFade()
+//                    .override(imageWidth,imageHeightMap.get(position))
+//                    .placeholder(R.drawable.white_bg)
+//                    .into(view);
+//            card.setVisibility(View.VISIBLE);
+//        }
     }
 
+    //不确定尺寸的时候
     public void loadImageFirst(View view, final int position) {
         //构造方法中参数view,就是回调方法中的this.view
         ViewTarget<View, Bitmap> target = new ViewTarget<View, Bitmap>(view) {
@@ -87,7 +96,7 @@ public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 //加载图片成功后调用
                 float scaleType = ((float) resource.getHeight()) / resource.getWidth();
-                imageWidth=view.getMeasuredWidth();
+                imageWidth = view.getMeasuredWidth();
                 int imageHeight = (int) (imageWidth * scaleType);
                 //获取图片高度，保存在Map中
                 imageHeightMap.put(position, imageHeight);
@@ -110,13 +119,13 @@ public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
                 lp.width = imageWidth;
                 lp.height = imageHeight;
                 this.view.setLayoutParams(lp);
-                ((ImageView) view).setImageResource(R.mipmap.ic_launcher);
+                ((ImageView) view).setImageResource(R.drawable.white_bg);
             }
         };
         Glide.with(this.mContext)
                 .load(url)
                 .asBitmap() //作为Bitmap加载，对应onResourceReady回调中第一个参数的类型
+                .placeholder(R.drawable.white_bg)
                 .into(target);
-        card.setVisibility(View.VISIBLE);
     }
 }

@@ -4,7 +4,6 @@ package com.jp.movieview.bean;
  * Created by jp on 2017/4/5.
  */
 public class MovieBean {
-    public static final String TAG = "MovieBean";
 
     String movieName;
     String movieUrl;
@@ -14,11 +13,13 @@ public class MovieBean {
     String movieNum;
     String movieMagnet;
 
+    public MovieBean() {
+    }
+
     public MovieBean(String movieName, String movieUrl) {
         this.movieName = movieName;
         this.movieUrl = movieUrl;
     }
-
 
     public String getMovieName() {
         return movieName;

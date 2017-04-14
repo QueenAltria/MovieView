@@ -1,6 +1,5 @@
-package com.jp.movieview.adapter;
+package com.jp.movieview.ui.adapter;
 
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -30,13 +29,8 @@ public class HotMovieAdapter extends BaseQuickAdapter<HotMovie, BaseViewHolder> 
     protected void convert(final BaseViewHolder helper, HotMovie item) {
         helper.setText(R.id.name, item.getName());
 
-        helper.getView(R.id.card).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ToastUtils.showToast(mContext,helper.getLayoutPosition()+"");
-            }
-        });
+        helper.getView(R.id.card).setOnClickListener(view -> ToastUtils.showToast(mContext, helper.getLayoutPosition() + ""));
 
-        Glide.with(mContext).load(item.getImg_url()).into((ImageView)helper.getView(R.id.movie_img));
+        Glide.with(mContext).load(item.getImg_url()).into((ImageView) helper.getView(R.id.movie_img));
     }
 }
