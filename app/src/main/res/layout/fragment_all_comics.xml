@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+
+              android:orientation="vertical"
+             tools:context="com.jp.movieview.ui.fragment.AllComicsFragment">
+
+    <com.jp.movieview.widget.DropDownMenu
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dropDownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ddmenuTextSize="13sp"
+        app:ddtextUnselectedColor="@color/drop_down_unselected"
+        app:ddtextSelectedColor="@color/drop_down_selected"
+        app:dddividerColor="@color/gray"
+        app:ddunderlineColor="@color/gray"
+        app:ddmenuMenuHeightPercent="0.5"
+        app:ddmenuSelectedIcon="@drawable/ic_keyboard_arrow_up_teal_500_24dp"
+        app:ddmaskColor="@color/mask_color"
+        app:ddmenuBackgroundColor="@color/white"
+        app:ddmenuUnselectedIcon="@drawable/ic_keyboard_arrow_down_grey_500_24dp"
+        />
+
+    <TextView
+        android:id="@+id/text1"
+        android:text="iasdABJDIUadiljALDJAiod"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+
+
+</LinearLayout>

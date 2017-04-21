@@ -38,7 +38,7 @@
             android:background="@color/colorWhite"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="45dp">
             <LinearLayout
                 android:id="@+id/left"
                 android:background="@drawable/tab_bg"

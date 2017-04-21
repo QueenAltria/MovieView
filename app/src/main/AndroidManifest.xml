@@ -21,18 +21,30 @@
         <activity
             android:name=".ui.activity.YandeActivity"
             android:theme="@style/AppTheme.NoActionBarAndSetColor">
+        </activity>
+
+        <service android:name=".service.DataService"/>
+        <service android:name=".service.DownloadService"/>
+
+        <activity
+            android:name=".ui.activity.PhotoViewActivity"
+            android:theme="@style/AppTheme.NoActionBarAndSetColor">
+        </activity>
+        <activity
+            android:name=".ui.activity.ComicsMainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <service android:name=".service.DataService"/>
-        <service android:name=".service.DownloadService"/>
-
-        <activity android:name=".ui.activity.PhotoViewActivity"
+        <activity
+            android:name=".ui.activity.ComicInfoActivity"
             android:theme="@style/AppTheme.NoActionBarAndSetColor">
+        </activity>
+        <activity android:name=".ui.activity.ReadComicsActivity"
+                  android:theme="@style/AppTheme.NoActionBarAndSetColor">
         </activity>
     </application>
 

@@ -17,6 +17,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jp.movieview.R;
 import com.jp.movieview.bean.YandeBean;
 import com.jp.movieview.constant.Code;
+import com.jp.movieview.injector.component.DaggerYandeComponent;
+import com.jp.movieview.injector.module.YandeModule;
 import com.jp.movieview.presenter.YandeItemPresenter;
 import com.jp.movieview.ui.adapter.YandeAdapter;
 import com.jp.movieview.utils.LogUtils;
@@ -30,13 +32,15 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.Calendar;
 import java.util.List;
 
-import static android.R.attr.progressBarStyleSmallTitle;
+import javax.inject.Inject;
+
 
 public class YandeActivity extends BaseMvpActivity
         implements BaseQuickAdapter.RequestLoadMoreListener,YandeItemView,SwipeRefreshLayout.OnRefreshListener {
 
     public static final String TAG = "YandeActivity";
 
+    @Inject
     YandeItemPresenter presenter;
     RecyclerView mRecyclerView;
     YandeAdapter adapter;
@@ -58,7 +62,8 @@ public class YandeActivity extends BaseMvpActivity
 
     @Override
     protected void fetchData() {
-        presenter=new YandeItemPresenter(this);
+        DaggerYandeComponent.builder().yandeModule(new YandeModule(this)).build().inject(this);
+
         presenter.getGirlItemData(String.valueOf(day),String.valueOf(month+1),String.valueOf(year));
     }
 

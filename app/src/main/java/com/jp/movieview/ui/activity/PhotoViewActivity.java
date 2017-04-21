@@ -110,7 +110,7 @@ public class PhotoViewActivity extends BaseMvpActivity {
         mToolbar.setTitleTextColor(ContextCompat.getColor(this,R.color.colorWhite));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        mToolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
 
         mToolbar.setNavigationOnClickListener(view -> onBackPressed());
 
