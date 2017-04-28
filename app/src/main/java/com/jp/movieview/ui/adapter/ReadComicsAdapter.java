@@ -50,10 +50,11 @@ public class ReadComicsAdapter extends BaseQuickAdapter<String, BaseViewHolder> 
 //        requestBuilder.downloadOnly();
 
         TextView textView=helper.getView(R.id.page);
-        textView.setText((helper.getAdapterPosition()+1)+"/"+this.getData().size());
+        textView.setText(item);
 
         mCallBack.getPosition(helper.getAdapterPosition()+1);
         ImageLoader.load(mContext,item,imageView);
+
 
     }
 

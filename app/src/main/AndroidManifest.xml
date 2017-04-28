@@ -38,13 +38,25 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+
+
+
+
+
         </activity>
         <activity
             android:name=".ui.activity.ComicInfoActivity"
             android:theme="@style/AppTheme.NoActionBarAndSetColor">
         </activity>
-        <activity android:name=".ui.activity.ReadComicsActivity"
-                  android:theme="@style/AppTheme.NoActionBarAndSetColor">
+        <activity
+            android:name=".ui.activity.ReadComicsActivity"
+            android:theme="@style/AppTheme.NoActionBarAndSetColor">
+        </activity>
+        <activity android:name=".ui.activity.DemoActivity">
+
+
+
         </activity>
     </application>
 

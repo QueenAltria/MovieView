@@ -26,6 +26,7 @@ import com.bumptech.glide.Glide;
 import com.jp.movieview.R;
 import com.jp.movieview.bean.CatalogBean;
 import com.jp.movieview.callback.JsonCallBack;
+import com.jp.movieview.rx.RxBus;
 import com.jp.movieview.ui.adapter.CatalogAdapter;
 import com.jp.movieview.utils.LogUtils;
 import com.lzy.okgo.OkGo;
@@ -116,7 +117,11 @@ public class ComicInfoActivity extends AppCompatActivity {
                             list.add(bean);
 
 
+
+
                         }
+
+                        RxBus.getDefault().post("我接收到消息了");
 
                         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                         final GridLayoutManager manager = new GridLayoutManager(ComicInfoActivity.this,3);
@@ -160,6 +165,9 @@ public class ComicInfoActivity extends AppCompatActivity {
 
             }
         });
+
+
+
 
 
         //Glide.with(this).load(bitmap).into(mImageView);

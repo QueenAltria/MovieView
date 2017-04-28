@@ -21,6 +21,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jp.movieview.R;
 import com.jp.movieview.bean.ComicBean;
 import com.jp.movieview.callback.JsonCallBack;
+import com.jp.movieview.rx.RxBus;
 import com.jp.movieview.ui.activity.ComicInfoActivity;
 import com.jp.movieview.ui.adapter.AllComicsAdapter;
 import com.jp.movieview.ui.adapter.AllComicsAdapter2;
@@ -36,6 +37,10 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
+import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 import static com.jp.movieview.R.id.imageView;
 
@@ -148,6 +153,21 @@ public class IndexCoimcsFragment extends Fragment {
 //                        });
                     }
                 });
+
+
+        Observable observable = RxBus.getDefault()
+                .toObservable(String.class);
+
+        Subscription subscription = observable
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        LogUtils.e(TAG,s);
+                    }
+                });//接收String类型的数据
+
+
         return view;
     }
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:id="@+id/guide_viewpager"
+        android:layout_height="match_parent"/>
+    <com.jp.movieview.widget.GuideViewPager
+        android:id="@+id/guide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/guide_group"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:id="@+id/guidepoint"
+            android:background="@drawable/guide_red_circle_shape"/>
+
+    </RelativeLayout>
+</RelativeLayout>
+
