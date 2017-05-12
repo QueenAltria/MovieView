@@ -2,6 +2,7 @@ package com.jp.movieview.bean;
 
 /**
  * Created by jp on 2017/4/21
+ * 目录
  */
 public class CatalogBean {
     public static final String TAG = "CatalogBean";

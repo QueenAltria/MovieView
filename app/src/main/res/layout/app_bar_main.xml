@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorTrans"
     android:fitsSystemWindows="false"
     android:orientation="vertical"
-    android:background="@color/colorTrans"
     tools:context="com.jp.movieview.ui.activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -19,55 +19,50 @@
         <!--CoordinatorLayout-->
         <!--app:layout_scrollFlags="scroll|enterAlways"-->
         <!--<FrameLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-            <android.support.v7.widget.Toolbar
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
 
         <!--<android.support.v7.widget.Toolbar-->
-            <!--android:background="@color/colorBG"-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="64dp"-->
-            <!--android:minHeight="64dp"-->
-            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
-            <!--app:layout_scrollFlags="scroll|enterAlways|snap"-->
-            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+        <!--android:background="@color/colorBG"-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="64dp"-->
+        <!--android:minHeight="64dp"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+        <!--app:layout_scrollFlags="scroll|enterAlways|snap"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
 
         <!--</FrameLayout>-->
         <com.arlib.floatingsearchview.FloatingSearchView
-            android:visibility="gone"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:id="@+id/floating_search_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:floatingSearch_searchBarMarginLeft="10dp"
-            app:floatingSearch_searchBarMarginTop="10dp"
-            app:floatingSearch_searchBarMarginRight="10dp"
-            app:floatingSearch_searchHint="Search..."
-            app:floatingSearch_suggestionsListAnimDuration="150"
-            app:floatingSearch_showSearchKey="false"
+            android:visibility="gone"
+            app:floatingSearch_close_search_on_keyboard_dismiss="true"
             app:floatingSearch_leftActionMode="showHamburger"
             app:floatingSearch_menu="@menu/search"
-            app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
-
-
-
+            app:floatingSearch_searchBarMarginLeft="10dp"
+            app:floatingSearch_searchBarMarginRight="10dp"
+            app:floatingSearch_searchBarMarginTop="10dp"
+            app:floatingSearch_searchHint="Search..."
+            app:floatingSearch_showSearchKey="false"
+            app:floatingSearch_suggestionsListAnimDuration="150"
+            app:layout_scrollFlags="scroll|enterAlways"/>
 
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main"/>
-
-
 
 
     <android.support.design.widget.FloatingActionButton

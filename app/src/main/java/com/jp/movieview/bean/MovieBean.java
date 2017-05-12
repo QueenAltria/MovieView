@@ -2,6 +2,7 @@ package com.jp.movieview.bean;
 
 /**
  * Created by jp on 2017/4/5.
+ * 电影
  */
 public class MovieBean {
 

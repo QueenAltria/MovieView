@@ -5,6 +5,5 @@ package com.jp.movieview.constant;
  */
 public class Code {
 
-    public static final int YANDE_CODE=1000;
-
+    public static final int YANDE_CODE = 1000;
 }

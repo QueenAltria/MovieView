@@ -1,9 +1,12 @@
 package com.jp.movieview.ui.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -37,6 +42,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -60,25 +67,34 @@ public class MainActivity extends AppCompatActivity
     private static final int PAGE_SIZE = 10;  //每页条数
     DrawerLayout drawer;
 
+    Toolbar toolbar;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler);
 
         setSupportActionBar(toolbar);
+
+
 
         final List<MovieBean> list=new ArrayList<>();
 
         adapter=new MainAdapter();
         adapter.setOnLoadMoreListener(this,mRecyclerView);
         final LinearLayoutManager manager=new LinearLayoutManager(MainActivity.this);
-        OkGo.get("http://www.diaosisou.com/list/"+name+"/"+page)
+        OkGo.get("http://www.diaosisou.net/list/"+name+"/"+page)
                 .tag(this)
                 .execute(new JsonCallBack<String>(MainActivity.this) {
                     @Override
                     public void onSuccess(String result, Call call, Response response) {
+
+                        //LogUtils.e(TAG,result);
 
                         Document doc = Jsoup.parse(result);
                         //Elements company = doc.select("a[href]");
@@ -188,6 +204,27 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        WebView mHeadWeb= (WebView) headerView.findViewById(R.id.head_web);
+
+
+        mHeadWeb.loadUrl("file:///android_asset/index.html");
+
+        // 简单快速的实现方法，内部使用AsyncTask
+// 但是可能不是最优的方法(因为有线程的切换)
+// 默认调色板大小(16).
+        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.head);
+        Palette.generateAsync(bitmap,16, new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(Palette palette) {
+                // palette为生成的调色板
+                Palette.Swatch vibrantSwatch = palette.getMutedSwatch();
+                int rgb = vibrantSwatch.getRgb();
+                LogUtils.e(TAG,rgb+"颜色");
+                toolbar.setBackgroundColor(rgb);
+            }
+        });
     }
 
     @Override

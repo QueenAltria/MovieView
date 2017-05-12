@@ -1,6 +1,8 @@
 package com.jp.movieview.widget;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.jp.movieview.R;
+import com.jp.movieview.ui.activity.YandeActivity;
 import com.jp.movieview.utils.DensityUtils;
 
 import java.util.ArrayList;
@@ -20,61 +23,54 @@ import java.util.List;
 /**
  * Created by jp on 2017/4/26
  */
-public class GuideViewPager extends RelativeLayout{
-    public static final String TAG = "GuideViewPager";
-    //指示器的数量
-    private int pointSize=0;
+public class GuideViewPager extends RelativeLayout {
+    public final String TAG = getClass().getName();
+
     List<View> imageviewlist;
     LinearLayout linearLayout;
     ViewPager mViewPager;
 
-    private static final int[] imgs = new int[]{R.mipmap.a2, R.mipmap.a3, R.mipmap.a4};
+    Context mContext;
+
+    private static final int[] imgs = new int[]{R.mipmap.a1, R.mipmap.a2, R.mipmap.a3};
 
     public GuideViewPager(Context context) {
         super(context);
-        mViewPager=new ViewPager(context);
-        linearLayout=new LinearLayout(context);
+        mContext = context;
+        mViewPager = new ViewPager(context);
+        linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         linearLayout.setLayoutParams(params);
         linearLayout.setGravity(Gravity.CENTER);
 
-
-        RelativeLayout.LayoutParams params1=new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params1 = new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        params1.setMargins(0,0,0,40);
+        params1.setMargins(0, 0, 0, 40);
         addView(mViewPager);
-        addView(linearLayout,params1);
-
+        addView(linearLayout, params1);
     }
 
     public GuideViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mViewPager=new ViewPager(context);
-        linearLayout=new LinearLayout(context);
+        mViewPager = new ViewPager(context);
+        linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         linearLayout.setLayoutParams(params);
         linearLayout.setGravity(Gravity.CENTER);
 
 
-        RelativeLayout.LayoutParams params1=new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params1 = new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        params1.setMargins(0,0,0,40);
+        params1.setMargins(0, 0, 0, 40);
         addView(mViewPager);
-        addView(linearLayout,params1);
+        addView(linearLayout, params1);
     }
 
 
-
-    public void setPointSize(int pointSize) {
-        this.pointSize = pointSize;
-    }
-
-
-
-    public void setData(Context context){
-
+    public void setData(Context context) {
+        mContext = context;
 
         imageviewlist = new ArrayList<>();
         for (int i = 0; i < imgs.length; i++) {
@@ -99,7 +95,7 @@ public class GuideViewPager extends RelativeLayout{
 
         linearLayout.getChildAt(0).setBackgroundResource(R.drawable.guide_red_circle_shape);
 
-        mViewPager.setPageTransformer(true,new ZoomOutPageTransformer());
+        //mViewPager.setPageTransformer(true,new ZoomOutPageTransformer());
         mViewPager.setAdapter(new GuideAdapter());
         mViewPager.addOnPageChangeListener(new GuidePageListener());
     }
@@ -128,7 +124,6 @@ public class GuideViewPager extends RelativeLayout{
         }
     }
 
-
     class GuidePageListener implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -138,14 +133,22 @@ public class GuideViewPager extends RelativeLayout{
         @Override
         public void onPageSelected(int position) {
 
-            View point=linearLayout.getChildAt(position);
+            if (position == linearLayout.getChildCount() - 1) {
+                imageviewlist.get(position)
+                        .setOnClickListener(view -> {
+                            mContext.startActivity(new Intent(mContext, YandeActivity.class));
+                            Activity activity=(Activity)mContext;
+                            activity.finish();
+                        });
+            }
 
-            for (int i=0;i<linearLayout.getChildCount();i++){
-                if(i==position){
-                    point=linearLayout.getChildAt(i);
+            View point;
+            for (int i = 0; i < linearLayout.getChildCount(); i++) {
+                if (i == position) {
+                    point = linearLayout.getChildAt(i);
                     point.setBackgroundResource(R.drawable.guide_red_circle_shape);
-                }else {
-                    point=linearLayout.getChildAt(i);
+                } else {
+                    point = linearLayout.getChildAt(i);
                     point.setBackgroundResource(R.drawable.guide_normal_cirlce_shape);
                 }
             }
@@ -156,8 +159,4 @@ public class GuideViewPager extends RelativeLayout{
 
         }
     }
-
-
-
-
 }

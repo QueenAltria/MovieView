@@ -3,8 +3,6 @@ package com.jp.movieview.net;
 import com.jp.movieview.api.GsonService;
 import com.jp.movieview.api.YandeService;
 
-import uk.co.senab.photoview.PhotoView;
-
 public class ApiService {
     public static ApiService getInstance() {
         return ApiService.SingletonHolder.INSTANCE;

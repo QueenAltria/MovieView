@@ -2,6 +2,7 @@ package com.jp.movieview.bean;
 
 /**
  * Created by jp on 2017/4/19
+ * 漫画
  */
 public class ComicBean {
     public static final String TAG = "ComicBean";

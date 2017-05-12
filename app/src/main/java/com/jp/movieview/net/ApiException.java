@@ -3,6 +3,8 @@ package com.jp.movieview.net;
 /**
  * Author: Othershe
  * Time:  2016/8/11 17:51
+ *
+ * 后台的code  错误代码
  */
 public class ApiException extends RuntimeException {
     private static final int CODE1 = 1000;
@@ -28,10 +30,10 @@ public class ApiException extends RuntimeException {
                 message = "该用户不存在";
                 break;
             case CODE2:
-                message = "服务器繁忙";
+                message = "密码错误";
                 break;
             case CODE3:
-                message = "请先登录";
+                message = "服务器繁忙";
                 break;
             default:
                 message = "未知错误";

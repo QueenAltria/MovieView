@@ -1,13 +1,14 @@
 package com.jp.movieview.rx;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.jp.movieview.ViewApplication;
+import com.jp.movieview.utils.LogUtils;
 import com.jp.movieview.utils.ToastUtils;
 
 import java.io.IOException;
 
+import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
 /**
@@ -15,6 +16,8 @@ import rx.Subscriber;
  * Time:  2016/8/11 17:45
  */
 public abstract class RxSubscriber<T> extends Subscriber<T> {
+    public final String TAG=getClass().getName();
+
     private Context mContext;
     private boolean mIsShowLoading;//是否显示加载loading
 
@@ -33,8 +36,14 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         //统一处理请求异常的情况
         if (e instanceof IOException) {
             ToastUtils.showToast(mContext, "网络连接异常");
-        } else {
+        } else if(e instanceof HttpException){
+            HttpException exception= (HttpException) e;
+            int code=exception.response().code();
             ToastUtils.showToast(mContext, e.getMessage());
+            LogUtils.e(TAG,e.getClass().getName()+"-----"+e.getLocalizedMessage());
+        } else {
+            ToastUtils.showToast(mContext, e.getLocalizedMessage());
+            LogUtils.e(TAG,e.getClass().getName()+"-----"+e.getLocalizedMessage());
         }
 
         _onError();

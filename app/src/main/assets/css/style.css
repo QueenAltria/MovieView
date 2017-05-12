@@ -1,0 +1,109 @@
+* {
+  margin: auto;
+  padding: auto;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  -webkit-animation: color 6s ease infinite;
+          animation: color 6s ease infinite;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-top: 20px solid;
+  border-radius: 50%;
+}
+
+main {
+  position: relative;
+  left: calc(50% - 125px);
+  top: calc(50vh - 75px);
+}
+
+.first {
+  -webkit-transform: skew(-10deg) translateX(50px) rotate(45deg);
+          transform: skew(-10deg) translateX(50px) rotate(45deg);
+  -webkit-animation: rot1 2s ease infinite;
+          animation: rot1 2s ease infinite;
+  border-color: #AA6AC5;
+}
+
+.second {
+  -webkit-transform: skew(-10deg) rotate(165deg);
+          transform: skew(-10deg) rotate(165deg);
+  -webkit-animation: rot2 2s ease infinite;
+          animation: rot2 2s ease infinite;
+  border-color: #66C4A8;
+}
+
+.third {
+  -webkit-transform: skew(-10deg) translateX(20px) translateY(-50px) rotate(285deg);
+          transform: skew(-10deg) translateX(20px) translateY(-50px) rotate(285deg);
+  -webkit-animation: rot3 2s ease infinite;
+          animation: rot3 2s ease infinite;
+  border-color: #FFCB84;
+}
+
+@-webkit-keyframes rot1 {
+  100% {
+    -webkit-transform: skew(-10deg) translateX(50px) rotate(405deg);
+            transform: skew(-10deg) translateX(50px) rotate(405deg);
+  }
+}
+
+@keyframes rot1 {
+  100% {
+    -webkit-transform: skew(-10deg) translateX(50px) rotate(405deg);
+            transform: skew(-10deg) translateX(50px) rotate(405deg);
+  }
+}
+@-webkit-keyframes rot2 {
+  100% {
+    -webkit-transform: skew(-10deg) rotate(525deg);
+            transform: skew(-10deg) rotate(525deg);
+  }
+}
+@keyframes rot2 {
+  100% {
+    -webkit-transform: skew(-10deg) rotate(525deg);
+            transform: skew(-10deg) rotate(525deg);
+  }
+}
+@-webkit-keyframes rot3 {
+  100% {
+    -webkit-transform: skew(-10deg) translateX(20px) translateY(-50px) rotate(645deg);
+            transform: skew(-10deg) translateX(20px) translateY(-50px) rotate(645deg);
+  }
+}
+@keyframes rot3 {
+  100% {
+    -webkit-transform: skew(-10deg) translateX(20px) translateY(-50px) rotate(645deg);
+            transform: skew(-10deg) translateX(20px) translateY(-50px) rotate(645deg);
+  }
+}
+@-webkit-keyframes color {
+  33%{
+    background: #E7CBF3;
+  }
+  66% {
+    background: #C9F3E6;
+  }
+  0%,100% {
+    background: #FFEDD3;
+  }
+}
+@keyframes color {
+  33%{
+    background: #E7CBF3;
+  }
+  66% {
+    background: #C9F3E6;
+  }
+  0%,100% {
+    background: #FFEDD3;
+  }
+}

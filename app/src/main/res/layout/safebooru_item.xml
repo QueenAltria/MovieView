@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.jp.movieview.widget.RatioImageView
+                android:transitionName="yande"
                 android:id="@+id/safe_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

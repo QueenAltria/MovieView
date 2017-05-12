@@ -2,6 +2,8 @@ package com.jp.movieview.net;
 
 import android.webkit.MimeTypeMap;
 
+import com.jp.movieview.utils.LogUtils;
+
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -23,6 +25,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  * Time:  2016/8/11 14:30
  */
 public class NetManager {
+    public String TAG=getClass().getName();
+
     private static final int DEFAULT_TIMEOUT = 10;
 
     public static NetManager getInstance() {
@@ -50,7 +54,7 @@ public class NetManager {
     public <S> S createString(Class<S> service) {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(getOkHttpClient())
-                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())   //String
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(getBaseUrl(service))
                 .build();
@@ -110,7 +114,9 @@ public class NetManager {
         builder.readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
         //配置log打印拦截器
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(message -> {
+            LogUtils.e(TAG,"HTTP"+message);
+        });
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(loggingInterceptor);
         return builder.build();

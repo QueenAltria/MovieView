@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -62,10 +63,13 @@ public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
                     //ToastUtils.showToast(mContext, item.getSrc_url());
                     Intent intent = new Intent(mContext, PhotoViewActivity.class);
                     intent.putExtra("url", item.getRealUrl());
+                    LogUtils.e(TAG,item.getRealUrl());
                     String[] split = item.getSrc_url().split("/");
                     String id = split[split.length - 1];
                     intent.putExtra("id", id);
                     intent.putStringArrayListExtra("tags",item.getTagList());
+
+
                     mContext.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext).toBundle());
                 }
         );

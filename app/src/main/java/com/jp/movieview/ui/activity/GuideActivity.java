@@ -1,9 +1,7 @@
 package com.jp.movieview.ui.activity;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,54 +10,53 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.jp.movieview.R;
 import com.jp.movieview.utils.DensityUtils;
 import com.jp.movieview.utils.LogUtils;
 import com.jp.movieview.widget.GuideViewPager;
-import com.jp.movieview.widget.ViewPagerIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.button;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class DemoActivity extends AppCompatActivity {
-    public static final String TAG="DemoActivity";
+
+public class GuideActivity extends AppCompatActivity {
+    public String TAG= getClass().getName();
+
+    @BindView(R.id.guide_viewpager)
     ViewPager viewPager;
+    @BindView(R.id.guide)
     GuideViewPager guide;
+    @BindView(R.id.guide_group)
     LinearLayout linearLayout;
+    @BindView(R.id.guidepoint)
     View red;
+
+
     private List<View> imageviewlist;
-    private int mPointWidth;// 圆点间的距离
-    private static final int[] imgs = new int[]{R.mipmap.a2, R.mipmap.a3, R.mipmap.a4};
+    private int mPointWidth;         // 圆点间的距离
+    private static final int[] imgs = new int[]{R.mipmap.a1, R.mipmap.a2, R.mipmap.a3};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_demo);
-        viewPager = (ViewPager) findViewById(R.id.guide_viewpager);
-
-        linearLayout = (LinearLayout) findViewById(R.id.guide_group);
-        red = findViewById(R.id.guidepoint);
-
-        guide= (GuideViewPager) findViewById(R.id.guide);
+        ButterKnife.bind(this);
 
         guide.setData(this);
 
         initViews();
         initData();
-
     }
 
 
     private void initData() {
-
 
         viewPager.setAdapter(new GuideAdapter());
 
@@ -73,36 +70,26 @@ public class DemoActivity extends AppCompatActivity {
                 LogUtils.e(TAG, "圆点距离:" + mPointWidth);
             }
         });
-        viewPager.setOnPageChangeListener(new GuidePageListener());
+        viewPager.addOnPageChangeListener(new GuidePageListener());
     }
 
 
     class GuidePageListener implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            // System.out.println("当前位置:" + position + ";百分比:" + positionOffset
-            // + ";移动距离:" + positionOffsetPixels);
+            LogUtils.e(TAG,"当前位置:" + position + ";百分比:" + positionOffset + ";移动距离:" + positionOffsetPixels);
 //            int len = (int) (mPointWidth * positionOffset) + position * mPointWidth;
-//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) red.getLayoutParams();// 获取当前红点的布局参数
-//            params.leftMargin = len;// 设置左边距
-//            red.setLayoutParams(params);// 重新给小红点设置布局参数
+//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) red.getLayoutParams();  // 获取当前红点的布局参数
+//            params.leftMargin = len;    // 设置左边距
+//            red.setLayoutParams(params);   // 重新给小红点设置布局参数
 
             red.setVisibility(View.GONE);
-
-
-
-
         }
 
         @Override
         public void onPageSelected(int position) {
-            if (imageviewlist.size() == position + 1) {
 
-            } else {
-
-            }
-
-            View point=linearLayout.getChildAt(position);
+            View point;
             for (int i=0;i<linearLayout.getChildCount();i++){
                 if(i==position){
                     point=linearLayout.getChildAt(i);
@@ -164,11 +151,8 @@ public class DemoActivity extends AppCompatActivity {
 
             linearLayout.addView(point);
 
-
         }
 
         linearLayout.getChildAt(0).setBackgroundResource(R.drawable.guide_red_circle_shape);
-
     }
-
 }

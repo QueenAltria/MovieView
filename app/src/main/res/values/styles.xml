@@ -44,4 +44,11 @@
         <item name="overlapAnchor">true</item>
     </style>
 
+    <style name="AppTheme.Boot" parent="AppTheme">
+        <!--<item name="android:windowBackground">@mipmap/loading_page</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

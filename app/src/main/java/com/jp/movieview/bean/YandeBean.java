@@ -5,10 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by jp on 2017/4/10.
+ * Yande 图站
  */
 public class YandeBean implements Parcelable {
 
