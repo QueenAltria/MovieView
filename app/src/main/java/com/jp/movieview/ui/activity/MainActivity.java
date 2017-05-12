@@ -51,6 +51,7 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,BaseQuickAdapter.RequestLoadMoreListener {
 
+    //测试
     public static final String TAG="MainActivity";
 
     private RecyclerView mRecyclerView;
