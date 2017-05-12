@@ -1,4 +1,29 @@
-﻿http://suwish.com/android-retrofit.html | Android Retrofit | 幻想的境界
+http://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&mid=2247484210&idx=1&sn=5551259f0152cb570f96e5764930706e&chksm=96cda27fa1ba2b6959df45699e84a0cc3c741b64008e1e365d13ed35a06ede14287502bf0ac2&mpshare=1&scene=23&srcid=0504Eez7m4cUlQxJHXoMiGR1#rd | Android自定义动画酷炫的提交按钮
+http://www.jianshu.com/p/6435a67bb495 | res下的anim和animator文件夹 - 简书
+http://www.cnblogs.com/hykun/p/Ua.html | 用户代理检测与浏览器Ua详细分析 - 黄映焜 - 博客园
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2014/0702/1627.html | Android PopupWindow详解 - 泡在网上的日子
+http://blog.csdn.net/liuloua/article/details/50912907 | 【Android开发】动画弹出PopupWindow并使背景变暗 - Roy的专栏 - 博客频道 - CSDN.NET
+http://blog.csdn.net/blogblj/article/details/52068457 | Android Activity 全局管理 终极解决方案 - Kevin的世界 - 博客频道 - CSDN.NET
+https://github.com/hehonghui/android-tech-frontier/blob/master/issue-35/%E7%94%A8Transition%E5%AE%8C%E6%88%90Fragment%E5%85%B1%E4%BA%AB%E5%85%83%E7%B4%A0%E7%9A%84%E5%88%87%E6%8D%A2.md | android-tech-frontier/用Transition完成Fragment共享元素的切换.md at master · hehonghui/android-tech-frontier
+https://juejin.im/entry/570f716a1ea493006b5ecfbb | 你必须了解的 RecyclerView 的五大开源项目 - 解决上拉加载、下拉刷新和添加 Header、Footer 等问题 - Android - 掘金
+https://www.materialpalette.com/green/pink | Material Design Color Palette Generator - Material Palette
+http://www.cnblogs.com/r-decade/p/6241693.html | MPAndroidChart 3.0——LineChart（折线图） - S丶black - 博客园
+http://www.jianshu.com/p/8cf84f719188 | 是时候学习RxJava了 - 简书
+http://blog.csdn.net/yehui928186846/article/details/51525648 | Rxjava——使用RxBus替换EventBus - boolean的博客 - 博客频道 - CSDN.NET
+http://www.jianshu.com/p/ca090f6e2fe2 | 用RxJava实现事件总线(Event Bus) - 简书
+https://juejin.im/entry/57bfe2b0128fe1005fb5ebb7 | 用 RxJava 模拟一个 EventBus ———RxBus - Android - 掘金
+https://libraries.io/github/wzgiceman/Rxbus | wzgiceman/Rxbus - Libraries.io
+http://blog.csdn.net/yyh352091626/article/details/53304728 | RxJava 从入门到出轨 - 初页的专栏 - 博客频道 - CSDN.NET
+http://www.jianshu.com/p/afa5a552fd4a | 大话RxJava 的基本及应用 - 简书
+http://lmh19941113.github.io/2015/12/02/guide-page/ | android引导页的实现 | 大逗大人的博客
+http://hanhailong.com/2015/09/27/Android-%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89ViewPager%E6%9D%A5%E9%AB%98%E4%BB%BF%E5%9C%9F%E5%B7%B4%E5%85%94%E9%80%89%E6%8B%A9%E8%A3%85%E4%BF%AE%E9%A3%8E%E6%A0%BC%E6%95%88%E6%9E%9C/ | Android-通过自定义ViewPager来高仿土巴兔选择装修风格效果 | 韩海龙的博客
+https://juejin.im/post/58f37cb361ff4b0058f9824a | 分享 50 个完整的 React Native 项目 - 掘金
+http://y-anz-m.blogspot.com/2016/ | Y.A.M の 雑記帳: 2016
+https://juejin.im/post/58dd3d53da2f60005fbb0a6c | Android中使用RecyclerView + SnapHelper实现类似ViewPager效果 - 掘金
+http://seniorzhai.github.io/2015/02/05/AndroidStudio%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%B1%87%E6%80%BB/ | AndroidStudio快捷键汇总 | SeniorZhai's blog
+http://blog.csdn.net/soslinken/article/details/52184113 | Android Dagger2 MVP架构 一看就明白 - Lincoln 的专栏 - 博客频道 - CSDN.NET
+http://blog.zhaiyifan.cn/ | markzhai's home
+http://suwish.com/android-retrofit.html | Android Retrofit | 幻想的境界
 http://www.jianshu.com/p/7b839b7c5884 | Android 教你一步步搭建MVP+Retrofit+RxJava网络请求框架 - 简书
 https://acg12.com/29676/2/ | 【科普干货】各大图站的介绍及使用方法还有搜索引擎的技巧 – 第2页 – ACG调查小队
 http://www.cnblogs.com/shiwei-bai/p/4991132.html | AndroidStudio项目提交（更新）到github最详细步骤 - 小白第二 - 博客园
