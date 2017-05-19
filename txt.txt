@@ -1,3 +1,33 @@
+http://blog.csdn.net/xiang_freedom/article/details/50801740 | Android ButterKnife绑定控件为null - xiang_freedom的专栏 - 博客频道 - CSDN.NET
+http://www.jianshu.com/p/154891851fe2 | 那些酷炫的RecyclerView开源库整理 - 简书
+https://www.draw.io/ | Untitled Diagram - draw.io
+https://www.laravist.com/ | Laravel 视频教程 - Laravist
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0228/4008.html | BottomSheets的使用 - 泡在网上的日子
+http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0914/3449.html | Chrome custom tabs：在浏览器与本地应用之间流畅的切换 - 泡在网上的日子
+http://www.jianshu.com/p/1bc5438584e3 | Android常用三方框架 - 简书
+http://www.12306bypass.com/ | 12306Bypass - 分流抢票
+http://www.ouchangjian.com/article/590968a098a8d9d44c5f57be | Lottie初级教程：打造iOS APP完美动画 - 推Code
+http://tanfujun.com/2017/02/08/%E5%90%8A%E7%82%B8%E5%A4%A9%E7%9A%84%E9%A1%B9%E7%9B%AE-Lottie%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6-%E5%85%A5%E9%97%A8%E7%AF%87/ | 吊炸天的项目 — Lottie学习研究（入门篇） - 晓晨DEV的技术博客|晓晨DEV‘s Blog
+https://github.com/bigxixi/bodymovin | bigxixi/bodymovin: 将AE制作的动画导出为json数据并在web端播放
+http://www.jianshu.com/p/b67726555ab5 | Adobe After Effects 中 bodymovin插件的安装 - 简书
+http://www.mq2014.com/bodymovin-ae-cha-jian-mac-win-an-zhuang-xia-zai.html | bodymovin AE插件 mac win安装下载 - 明泉在线教育-影视艺术MOOC教程学习网
+http://www.iplaysoft.com/material-design-wallpapers.html | 6百多张简约多彩的谷歌 Android Material Design 极简设计风格壁纸大合集打包 | 异次元软件下载
+http://www.jianshu.com/p/e289e949641d | 推荐10个优秀的国外UI设计网站 - 简书
+http://www.shejidaren.com/top-material-design-frameworks.html | 9个目前流行的Material Design前端框架 | 设计达人
+http://p.codekk.com/?s=%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A | Android 开源项目集合
+http://dalingge.com/2017/05/09/%E4%BD%BF%E7%94%A8Jsoup%E6%8A%93%E5%8F%96%E5%B9%B2%E8%B4%A7%E9%9B%86%E4%B8%AD%E8%90%A5%E9%97%B2%E8%AF%BB%E6%95%B0%E6%8D%AE/ | 使用Jsoup抓取干货集中营闲读数据 | 达令哥的博客
+https://unsplash.it/1080/1920/?random | 1920 (1080×1920)
+https://github.com/Aspsine/SwipeToLoadLayout/issues/61 | 请教个 CoordinatorLayout 和 AppBarLayout 提早下拉刷新的问题 · Issue #61 · Aspsine/SwipeToLoadLayout
+http://blog.csdn.net/u013006139/article/details/51404350 | 解决RecyclerView上拉加载、下拉刷新、Header和Footer的第三方解决方案 - 仁权 - 博客频道 - CSDN.NET
+http://icon.wuruihong.com/ | 图标工场 - 移动应用图标生成工具，一键生成所有尺寸的应用图标
+http://nucleus.coding.me/IconStudio/index.html | 图标工作室
+http://www.jianshu.com/p/337c06f322c2 | Rxjava、Retrofit返回json数据解析异常处理 - 简书
+http://blog.csdn.net/mq2553299/article/details/70244529 | Android RxJava+Retrofit网络异常、状态码统一处理 - 却把青梅嗅的博客 - 博客频道 - CSDN.NET
+http://mrljdx.com/2016/01/07/Retrofit2-0-%E6%96%B0%E7%89%B9%E6%80%A7%E7%AE%80%E4%BB%8B/ | Retrofit2.0 新特性简介 | Mrljdx’s Blog
+https://www.zybuluo.com/cxm-2016/note/467206 | RxJava学习指南(五)——变换操作符 - 作业部落 Cmd Markdown 编辑阅读器
+http://www.jianshu.com/p/94f6370ed18d | RxJava 与 Retrofit 结合网络请求，你值得拥有 - 简书
+https://notes.wanghao.work/2016-07-02-RxJava%E9%85%8D%E5%90%88Retofit%E6%8E%A5%E6%94%B6%E9%94%99%E8%AF%AFbody.html | RxJava、Retrofit接收Error Response Body | Doublemine
+http://szysky.com/2016/07/18/Retrofit-%E4%B8%80-%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/ | Retrofit(一)-入门使用 - 筑梦 suzeyu`苏泽钰
 http://mp.weixin.qq.com/s?__biz=MzIwMzYwMTk1NA==&mid=2247484210&idx=1&sn=5551259f0152cb570f96e5764930706e&chksm=96cda27fa1ba2b6959df45699e84a0cc3c741b64008e1e365d13ed35a06ede14287502bf0ac2&mpshare=1&scene=23&srcid=0504Eez7m4cUlQxJHXoMiGR1#rd | Android自定义动画酷炫的提交按钮
 http://www.jianshu.com/p/6435a67bb495 | res下的anim和animator文件夹 - 简书
 http://www.cnblogs.com/hykun/p/Ua.html | 用户代理检测与浏览器Ua详细分析 - 黄映焜 - 博客园
