@@ -20,12 +20,31 @@ public interface YandeService {
             "User-Agent: UA",
     })
     @GET("post/popular_by_day")
-    Observable<String> getYandePopularData(@Query("day") String day,
-                                           @Query("month") String month,
-                                           @Query("year") String year);
+    Observable<String> getPopularDayData(@Query("day") String day,
+                                         @Query("month") String month,
+                                         @Query("year") String year);
+
+
+    @GET("post/popular_by_week")
+    Observable<String> getPopularWeekData(@Query("day") String day,
+                                         @Query("month") String month,
+                                         @Query("year") String year);
+
+    @GET("post/popular_by_month")
+    Observable<String> getPopularMonthData(@Query("day") String day,
+                                         @Query("month") String month,
+                                         @Query("year") String year);
+
+    @GET("post/popular_recent")
+    Observable<String> getPopularYearData(@Query("period") String period);
+
+
+    @GET("post")
+    Observable<String> getTagData(@Query("page") String page,
+                                  @Query("tags") String tags);
 
     @GET("post/popular_by_day?day={day}&month={month}&year={year}")
-    Observable<String> getYandePopularData1(@Path("day") String day,
+    Observable<String> getYandePopularData(@Path("day") String day,
                                            @Path("month") String month,
                                            @Path("year") String year);
 

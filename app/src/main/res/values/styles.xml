@@ -34,12 +34,15 @@
         <item name="android:imeOptions">actionSearch</item>
     </style>
 
-    <style name="Title" parent="Theme.Design.NoActionBar">
-        <item name="actionMenuTextColor">#ffffff</item>
+    <style name="Title" parent="Base.ThemeOverlay.AppCompat.ActionBar">
+        <!--右边三个点的颜色-->
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+
         <!-- 设置Menu菜单的背景色 -->
-        <item name="android:itemBackground">@android:color/white</item>
+        <!--<item name="android:itemBackground">@android:color/white</item>-->
         <!-- 设置Menu菜单的字体颜色 -->
-        <item name="android:textColorPrimary">@android:color/black</item>
+        <!--<item name="android:textColorPrimary">@android:color/black</item>-->
         <!-- 设置Menu窗口不覆盖Toolbar视图 -->
         <item name="overlapAnchor">true</item>
     </style>
@@ -49,6 +52,32 @@
         <item name="android:windowNoTitle">true</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <style name="Plaid" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
+    </style>
+
+
+    <style name="Plaid.Translucent">
+        <!-- using a semi-transparent window background for the drag-back gesture -->
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/colorTransDark</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="Plaid.Translucent.About">
+        <item name="android:windowEnterTransition">@transition/about_enter</item>
+        <item name="android:windowReturnTransition">@transition/about_return</item>
     </style>
 
 </resources>

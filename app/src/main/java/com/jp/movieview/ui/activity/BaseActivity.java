@@ -33,6 +33,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(initLayoutId());
 
+
+        //android会自动填充一个默认的背景   或者设置activity的theme背景
+        //getWindow().setBackgroundDrawable(null);
+
         mContext = this;
         mUnbinder = ButterKnife.bind(this);
 

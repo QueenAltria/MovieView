@@ -3,6 +3,7 @@ package com.jp.movieview.widget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.webkit.WebView;
 import android.widget.ZoomButtonsController;
@@ -66,6 +67,7 @@ public class SupportZoomWebView extends WebView {
             // 隐藏按钮
             zoomController.setVisible(false);
         }
-        return true;
+        //false 将不会接收到事件
+        return false;
     }
 }

@@ -43,7 +43,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
             LogUtils.e(TAG,e.getClass().getName()+"-----"+e.getLocalizedMessage());
         } else {
             ToastUtils.showToast(mContext, e.getLocalizedMessage());
-            LogUtils.e(TAG,e.getClass().getName()+"-----"+e.getLocalizedMessage());
+            LogUtils.e(TAG,"未知异常"+e.getClass().getName()+"-----"+e.getLocalizedMessage());
         }
 
         _onError();

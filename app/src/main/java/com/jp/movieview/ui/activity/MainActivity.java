@@ -1,12 +1,11 @@
 package com.jp.movieview.ui.activity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +26,9 @@ import com.jp.movieview.R;
 import com.jp.movieview.bean.MovieBean;
 import com.jp.movieview.callback.JsonCallBack;
 import com.jp.movieview.ui.adapter.MainAdapter;
+import com.jp.movieview.ui.fragment.IndexCoimcsFragment;
+import com.jp.movieview.ui.fragment.KonachanFragment;
+import com.jp.movieview.ui.fragment.YandeFragment;
 import com.jp.movieview.utils.LogUtils;
 
 import com.jp.movieview.utils.ToastUtils;
@@ -42,10 +44,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
+import okhttp3.internal.http2.Header;
 
 
 public class MainActivity extends AppCompatActivity
@@ -70,6 +72,11 @@ public class MainActivity extends AppCompatActivity
 
     Toolbar toolbar;
 
+    YandeFragment mYandeFragment;
+    IndexCoimcsFragment mIndexCoimcsFragment;
+
+    int nowId=R.id.nav_yande;
+
 
 
     @Override
@@ -81,6 +88,15 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView= (RecyclerView) findViewById(R.id.recycler);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setTitle("Yande");
+
+        mYandeFragment=new YandeFragment();
+        mIndexCoimcsFragment=new IndexCoimcsFragment();
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.content_layout,mYandeFragment)
+                .commit();
 
 
 
@@ -209,23 +225,40 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         WebView mHeadWeb= (WebView) headerView.findViewById(R.id.head_web);
 
+//        navigationView.setNavigationItemSelectedListener(item -> {
+//            item.setChecked(false);
+//            return false;
+//        });
+
+
 
         mHeadWeb.loadUrl("file:///android_asset/index.html");
 
         // 简单快速的实现方法，内部使用AsyncTask
 // 但是可能不是最优的方法(因为有线程的切换)
 // 默认调色板大小(16).
-        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.head);
-        Palette.generateAsync(bitmap,16, new Palette.PaletteAsyncListener() {
-            @Override
-            public void onGenerated(Palette palette) {
-                // palette为生成的调色板
-                Palette.Swatch vibrantSwatch = palette.getMutedSwatch();
-                int rgb = vibrantSwatch.getRgb();
-                LogUtils.e(TAG,rgb+"颜色");
-                toolbar.setBackgroundColor(rgb);
-            }
-        });
+//        Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.head);
+//        Palette.generateAsync(bitmap,16, new Palette.PaletteAsyncListener() {
+//            @Override
+//            public void onGenerated(Palette palette) {
+//                // palette为生成的调色板
+//                Palette.Swatch vibrantSwatch = palette.getMutedSwatch();
+//                int rgb = vibrantSwatch.getRgb();
+//                int titleTextColor = vibrantSwatch.getTitleTextColor();
+//                LogUtils.e(TAG,rgb+"颜色"+titleTextColor);
+//               // toolbar.setBackgroundColor(rgb);
+//               // getWindow().setStatusBarColor(rgb+50);
+//                //drawer.getStatusBarBackgroundDrawable()
+//            }
+//        });
+//
+//        Palette.Builder bul=new Palette.Builder(bitmap);
+//        bul.generate(new Palette.PaletteAsyncListener() {
+//            @Override
+//            public void onGenerated(Palette palette) {
+//
+//            }
+//        });
     }
 
     @Override
@@ -241,7 +274,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
+       // getMenuInflater().inflate(R.menu.main, menu);
 
         //getMenuInflater().inflate(R.menu.search, menu);
 //
@@ -282,17 +315,32 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_yande & nowId!=R.id.nav_yande) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_layout,new YandeFragment())
+                    .commit();
+            toolbar.setTitle("Yande");
+            nowId=R.id.nav_yande;
+        } else if (id == R.id.nav_konachan & nowId!=R.id.nav_konachan) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_layout,new KonachanFragment())
+                    .commit();
+            toolbar.setTitle("Konachan");
+            nowId=R.id.nav_konachan;
+        } else if (id == R.id.nav_comic & nowId!=R.id.nav_comic) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_layout,mIndexCoimcsFragment)
+                    .commit();
+            toolbar.setTitle("2animx");
+            nowId=R.id.nav_comic;
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_setting & nowId!=R.id.nav_setting) {
 
-        } else if (id == R.id.nav_manage) {
+            Intent intent=new Intent(this,SettingActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
 
         }
 

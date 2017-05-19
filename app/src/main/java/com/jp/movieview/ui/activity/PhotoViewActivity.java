@@ -9,6 +9,7 @@ import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -38,6 +39,7 @@ import com.jp.movieview.service.DownloadService;
 import com.jp.movieview.utils.DensityUtils;
 import com.jp.movieview.utils.LogUtils;
 import com.jp.movieview.utils.ToastUtils;
+import com.jp.movieview.widget.ElasticDragDismissFrameLayout;
 import com.jp.movieview.widget.SupportZoomWebView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -50,6 +52,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import uk.co.senab.photoview.PhotoView;
 
+import static android.webkit.WebSettings.LOAD_CACHE_ELSE_NETWORK;
 import static com.jp.movieview.R.id.url;
 
 
@@ -64,7 +67,7 @@ public class PhotoViewActivity extends BaseMvpActivity {
     ArrayList<String> tags;
 
     ProgressBar progress;
-    RelativeLayout layout;
+    ElasticDragDismissFrameLayout layout;
 
     @BindView(R.id.web)
     SupportZoomWebView mWebView;
@@ -92,6 +95,8 @@ public class PhotoViewActivity extends BaseMvpActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         getWindow().setEnterTransition(mTransition);
         getWindow().setExitTransition(mTransition);
+
+
         return R.layout.activity_photo_view;
     }
 
@@ -101,23 +106,42 @@ public class PhotoViewActivity extends BaseMvpActivity {
         mPhotoView = (PhotoView) findViewById(R.id.photo);
         mToolbar= (Toolbar) findViewById(R.id.toolbar);
 
-        layout= (RelativeLayout) findViewById(R.id.activity_photo_view);
+        getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.colorBlack));
+
+        layout= (ElasticDragDismissFrameLayout) findViewById(R.id.activity_photo_view);
+        layout.setFocusable(true);
+        layout.setClickable(true);
+
+//        progress=new ProgressBar(PhotoViewActivity.this,null,android.R.attr.progressBarStyleSmallInverse);
+//
+//        progress.setVisibility(View.VISIBLE);
+//        progress.setScrollBarSize(DensityUtils.dip2px(50));
+//
+//        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+//        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+//
+//
+//        layout.addView(progress,params);
+
+        layout.addListener(
+                new ElasticDragDismissFrameLayout.SystemChromeFader(this) {
+                    @Override
+                    public void onDragDismissed() {
+                        // if we drag dismiss downward then the default reversal of the enter
+                        // transition would slide content upward which looks weird. So reverse it.
+//                        if (layout.getTranslationY() > 0) {
+//                            getWindow().setReturnTransition(
+//                                    TransitionInflater.from(PhotoViewActivity.this)
+//                                            .inflateTransition(R.transition.about_return_downward));
+//                        }
+                        finishAfterTransition();
+                    }
+                });
 
 
-        progress=new ProgressBar(PhotoViewActivity.this,null,android.R.attr.progressBarStyleSmallInverse);
-
-        progress.setVisibility(View.VISIBLE);
-        progress.setScrollBarSize(DensityUtils.dip2px(50));
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.CENTER_IN_PARENT);
 
 
-        layout.addView(progress,params);
-    }
 
-    @Override
-    protected void initData() {
         url = getIntent().getStringExtra("url");
         String id = getIntent().getStringExtra("id");
         tags=getIntent().getStringArrayListExtra("tags");
@@ -132,39 +156,52 @@ public class PhotoViewActivity extends BaseMvpActivity {
         mToolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         mWebView.loadUrl(url);
+        mWebView.setFocusable(false);
+        mWebView.setClickable(false);
         mWebView.setBackgroundColor(ContextCompat.getColor(this,R.color.colorTrans));
+        mWebView.setVerticalScrollBarEnabled(false); //垂直不显示
+        mWebView.setHorizontalScrollBarEnabled(false);
         //mWebView.setVisibility(View.GONE);
         WebSettings settings = mWebView.getSettings();
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
         settings.setJavaScriptEnabled(true);
-        settings.setBuiltInZoomControls(true);//显示放大缩小 controler
-        settings.setSupportZoom(true);
+        settings.setBuiltInZoomControls(false);//显示放大缩小 controler
+        settings.setSupportZoom(false);
+
+        mWebView.setDrawingCacheEnabled(true);
+        settings.setAppCacheEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+    }
+
+    @Override
+    protected void initData() {
 
 
+        String id = getIntent().getStringExtra("id");
         if(check(id)){
-            File file=new File(Environment.getExternalStorageDirectory().getPath() + "/AView/Yande/"+id+".jpg");
-            ToastUtils.showToast(this,"开始了1");
-            Glide.with(this)
-                    .load(file)
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT)//让Glide既缓存全尺寸图片，下次在任何ImageView中加载图片的时候，全尺寸的图片将从缓存中取出，重新调整大小，然后缓存
-                    .crossFade()
-                    //.listener(listener1)
-                    .into(mPhotoView);
+//            File file=new File(Environment.getExternalStorageDirectory().getPath() + "/AView/Yande/"+id+".jpg");
+//            ToastUtils.showToast(this,"开始了1");
+//            Glide.with(this)
+//                    .load(file)
+//                    .diskCacheStrategy(DiskCacheStrategy.RESULT)//让Glide既缓存全尺寸图片，下次在任何ImageView中加载图片的时候，全尺寸的图片将从缓存中取出，重新调整大小，然后缓存
+//                    .crossFade()
+//                    //.listener(listener1)
+//                    .into(mPhotoView);
         }else {
-            File file=new File(Environment.getExternalStorageDirectory().getPath() + "/AView/Yande/");
-            if(file.exists()){
-                ToastUtils.showToast(this,"开始了2");
-                DownloadService.startService(this,url,id);
-            }else {
-                ToastUtils.showToast(this,"开始了3");
-                try {
-                    file.mkdirs();
-                    DownloadService.startService(this,url,id);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+//            File file=new File(Environment.getExternalStorageDirectory().getPath() + "/AView/Yande/");
+//            if(file.exists()){
+//                ToastUtils.showToast(this,"开始了2");
+//                DownloadService.startService(this,url,id);
+//            }else {
+//                ToastUtils.showToast(this,"开始了3");
+//                try {
+//                    file.mkdirs();
+//                    DownloadService.startService(this,url,id);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
         }
         //ToastUtils.showToast(this, url);
@@ -251,10 +288,14 @@ public class PhotoViewActivity extends BaseMvpActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.somemenu, menu);
+
+        getMenuInflater().inflate(R.menu.main, menu);
+
         for (int i=0;i<tags.size();i++){
             menu.add(tags.get(i));
         }
+
+
 
         return true;
     }
@@ -273,15 +314,15 @@ public class PhotoViewActivity extends BaseMvpActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(String backStr){
-        if(backStr.equals("ok")){
-            File file=new File(Environment.getExternalStorageDirectory().getPath() + "/AView/Yande/"+filePath+".jpg");
-
-            Glide.with(this)
-                    .load(file)
-                    .diskCacheStrategy(DiskCacheStrategy.RESULT)//让Glide既缓存全尺寸图片，下次在任何ImageView中加载图片的时候，全尺寸的图片将从缓存中取出，重新调整大小，然后缓存
-                    .crossFade()
-                    //.listener(listener1)
-                    .into(mPhotoView);
-        }
+//        if(backStr.equals("ok")){
+//            File file=new File(Environment.getExternalStorageDirectory().getPath() + "/AView/Yande/"+filePath+".jpg");
+//
+//            Glide.with(this)
+//                    .load(file)
+//                    .diskCacheStrategy(DiskCacheStrategy.RESULT)//让Glide既缓存全尺寸图片，下次在任何ImageView中加载图片的时候，全尺寸的图片将从缓存中取出，重新调整大小，然后缓存
+//                    .crossFade()
+//                    //.listener(listener1)
+//                    .into(mPhotoView);
+//        }
     }
 }

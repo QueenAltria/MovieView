@@ -30,13 +30,10 @@ public class CatalogAdapter extends BaseQuickAdapter<CatalogBean,BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, CatalogBean item) {
         helper.setText(R.id.title,item.getTitle());
-        helper.getView(R.id.title).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(mContext, ReadComicsActivity.class);
-                intent.putExtra("url",item.getUrl());
-                mContext.startActivity(intent);
-            }
+        helper.getView(R.id.title).setOnClickListener(view -> {
+            Intent intent=new Intent(mContext, ReadComicsActivity.class);
+            intent.putExtra("url",item.getUrl());
+            mContext.startActivity(intent);
         });
     }
 }

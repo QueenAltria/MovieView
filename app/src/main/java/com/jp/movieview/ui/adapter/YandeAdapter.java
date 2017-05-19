@@ -39,18 +39,18 @@ public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
 
 
     public YandeAdapter(List<YandeBean> data) {
-        super(R.layout.safebooru_item, data);
+        super(R.layout.yande_item, data);
     }
 
     public YandeAdapter() {
-        super(R.layout.safebooru_item);
+        super(R.layout.yande_item);
     }
 
     @Override
     protected void convert(final BaseViewHolder helper, final YandeBean item) {
 
         helper.setIsRecyclable(false);
-        helper.setText(R.id.content_text, item.getName() + "\n" + item.getSize());
+        helper.setText(R.id.content_text, "Posted By:"+item.getName() + "\n" + "Size:"+item.getSize());
         RatioImageView view = helper.getView(R.id.safe_img);
         url = item.getPreview_url();
 
@@ -65,12 +65,23 @@ public class YandeAdapter extends BaseQuickAdapter<YandeBean, BaseViewHolder> {
                     intent.putExtra("url", item.getRealUrl());
                     LogUtils.e(TAG,item.getRealUrl());
                     String[] split = item.getSrc_url().split("/");
-                    String id = split[split.length - 1];
+                    //String id = split[split.length - 1];
+                    String id = split[3];
                     intent.putExtra("id", id);
                     intent.putStringArrayListExtra("tags",item.getTagList());
 
 
-                    mContext.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext).toBundle());
+
+            Pair<View,String> pair=Pair.create(view, "yande");
+
+
+            ActivityOptionsCompat options =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext,
+                            pair);
+
+            //mContext.startActivity(intent, options.toBundle());
+
+                   mContext.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext).toBundle());
                 }
         );
 

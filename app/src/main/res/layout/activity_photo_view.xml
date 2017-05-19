@@ -1,34 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<com.jp.movieview.widget.ElasticDragDismissFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_photo_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/colorTrans"
+    app:dragDismissDistance="112dp"
+    app:dragDismissScale="0.95"
     tools:context="com.jp.movieview.ui.activity.PhotoViewActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:theme="@style/Title"
-        android:background="@color/colorPrimary"
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <uk.co.senab.photoview.PhotoView
+    <LinearLayout
         android:visibility="gone"
-        android:layout_below="@id/toolbar"
-        android:background="@color/black"
-        android:layout_centerInParent="true"
-        android:id="@+id/photo"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <com.jp.movieview.widget.SupportZoomWebView
-        android:transitionName="yande"
-        android:layout_below="@id/toolbar"
-        android:id="@+id/web"
+
+        <uk.co.senab.photoview.PhotoView
+            android:visibility="gone"
+            android:background="@color/black"
+            android:layout_centerInParent="true"
+            android:id="@+id/photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:fillViewport="true"
+        android:focusable="true"
+        android:clickable="true"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
 
-</RelativeLayout>
+        android:nestedScrollingEnabled="true">
+        <RelativeLayout
+            android:background="@color/colorBlack"
+            android:focusable="false"
+            android:clickable="false"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.Toolbar
+
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:theme="@style/Title"
+                android:background="@color/colorTrans"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.jp.movieview.widget.SupportZoomWebView
+
+                android:layout_below="@id/toolbar"
+                android:background="@color/colorTrans"
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_centerInParent="true"
+                android:transitionName="yande"
+                android:id="@+id/web"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+
+            <TextView
+                android:background="@color/colorTrans"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+
+</com.jp.movieview.widget.ElasticDragDismissFrameLayout>

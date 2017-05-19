@@ -18,9 +18,57 @@ public class YandeItemPresenter extends BasePresenter<YandeItemView> {
         super(view);
     }
 
-    public void getGirlItemData(String day, String month,String year) {
+    public void getDayItemData(String day, String month, String year) {
         mSubscription = RxManager.getInstance()
-                .doSubscribe(ApiService.getInstance().initService(YandeService.class).getYandePopularData(day,month,year),
+                .doSubscribe(ApiService.getInstance().initService(YandeService.class).getPopularDayData(day,month,year),
+                        new RxSubscriber<String>(false) {
+                            @Override
+                            protected void _onNext(String s) {
+                                mView.onSuccess(Code.YANDE_CODE,JsoupUtil.parseYandeData(s));
+                            }
+
+                            @Override
+                            protected void _onError() {
+                                mView.onError();
+                            }
+                        });
+    }
+
+    public void getWeekItemData(String day, String month,String year) {
+        mSubscription = RxManager.getInstance()
+                .doSubscribe(ApiService.getInstance().initService(YandeService.class).getPopularWeekData(day,month,year),
+                        new RxSubscriber<String>(false) {
+                            @Override
+                            protected void _onNext(String s) {
+                                mView.onSuccess(Code.YANDE_CODE,JsoupUtil.parseYandeData(s));
+                            }
+
+                            @Override
+                            protected void _onError() {
+                                mView.onError();
+                            }
+                        });
+    }
+
+    public void getMonthItemData(String day, String month,String year) {
+        mSubscription = RxManager.getInstance()
+                .doSubscribe(ApiService.getInstance().initService(YandeService.class).getPopularMonthData(day,month,year),
+                        new RxSubscriber<String>(false) {
+                            @Override
+                            protected void _onNext(String s) {
+                                mView.onSuccess(Code.YANDE_CODE,JsoupUtil.parseYandeData(s));
+                            }
+
+                            @Override
+                            protected void _onError() {
+                                mView.onError();
+                            }
+                        });
+    }
+
+    public void getYearItemData(String period) {
+        mSubscription = RxManager.getInstance()
+                .doSubscribe(ApiService.getInstance().initService(YandeService.class).getPopularYearData(period),
                         new RxSubscriber<String>(false) {
                             @Override
                             protected void _onNext(String s) {

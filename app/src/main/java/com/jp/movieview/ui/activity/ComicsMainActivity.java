@@ -54,26 +54,22 @@ public class ComicsMainActivity extends AppCompatActivity implements NavigationV
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_yande) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_konachan) {
             manager=getSupportFragmentManager();
             manager.beginTransaction().show(fragment1)
                     .hide(fragment2)
                     .commit();
 
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_comic) {
             manager=getSupportFragmentManager();
             manager.beginTransaction().show(fragment2)
                     .hide(fragment1)
                     .commit();
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_setting) {
 
         }
 

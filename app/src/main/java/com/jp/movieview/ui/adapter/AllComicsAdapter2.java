@@ -15,9 +15,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.jp.movieview.R;
 import com.jp.movieview.bean.ComicBean;
+import com.jp.movieview.bean.MySection;
 import com.jp.movieview.ui.activity.ComicInfoActivity;
 import com.jp.movieview.utils.ImageLoader;
 import com.jp.movieview.utils.LogUtils;
@@ -30,26 +32,40 @@ import java.util.Map;
 
 import static android.support.v4.content.ContextCompat.startActivity;
 import static com.jp.movieview.R.id.content_text;
+import static com.jp.movieview.R.id.imageView;
 
 /**
  * Created by jp on 2017/4/5.
  */
-public class AllComicsAdapter2 extends BaseQuickAdapter<ComicBean, BaseViewHolder> {
+public class AllComicsAdapter2 extends BaseSectionQuickAdapter<MySection, BaseViewHolder> {
     public static final String TAG = "AllComicsAdapter2";
 
-    public AllComicsAdapter2(List<ComicBean> data) {
-        super(R.layout.comics_item, data);
-        LogUtils.e(TAG,"构造1");
+
+    public AllComicsAdapter2( List<MySection> data) {
+        super(R.layout.safebooru_item, R.layout.def_section_head, data);
     }
 
-    public AllComicsAdapter2() {
-        super(R.layout.comics_item);
-        LogUtils.e(TAG,"构造2 ");
+    public AllComicsAdapter2(int layoutResId, int sectionHeadResId, List<MySection> data) {
+        super(layoutResId, sectionHeadResId, data);
     }
 
     @Override
-    protected void convert(final BaseViewHolder helper, final ComicBean item) {
+    protected void convertHead(BaseViewHolder helper, MySection item) {
+        helper.setText(R.id.header,item.header);
+        if(item.isMore()){
+            helper.getView(R.id.more).setVisibility(View.VISIBLE);
+        }else {
+            helper.getView(R.id.more).setVisibility(View.GONE);
+
+        }
+    }
+
+    @Override
+    protected void convert(final BaseViewHolder helper, final MySection data) {
         LogUtils.e(TAG,"开始处理 ");
+
+        ComicBean item=data.t;
+
         ImageView imageView = helper.getView(R.id.safe_img);
         TextView textView=helper.getView(R.id.content_text);
         //TODO 跑马灯未实现

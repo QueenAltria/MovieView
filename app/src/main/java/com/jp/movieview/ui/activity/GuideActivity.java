@@ -17,6 +17,7 @@ import com.jp.movieview.R;
 import com.jp.movieview.utils.DensityUtils;
 import com.jp.movieview.utils.LogUtils;
 import com.jp.movieview.widget.GuideViewPager;
+import com.jp.movieview.widget.InkPageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,9 @@ public class GuideActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     @BindView(R.id.guidepoint)
     View red;
+
+    @BindView(R.id.indicator)
+    InkPageIndicator mInkPageIndicator;
 
 
     private List<View> imageviewlist;
@@ -71,6 +75,8 @@ public class GuideActivity extends AppCompatActivity {
             }
         });
         viewPager.addOnPageChangeListener(new GuidePageListener());
+
+        mInkPageIndicator.setViewPager(viewPager);
     }
 
 

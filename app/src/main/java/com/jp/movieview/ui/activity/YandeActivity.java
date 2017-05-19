@@ -2,7 +2,6 @@ package com.jp.movieview.ui.activity;
 
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
-import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jp.movieview.R;
@@ -64,7 +62,7 @@ public class YandeActivity extends BaseMvpActivity
     protected void fetchData() {
         DaggerYandeComponent.builder().yandeModule(new YandeModule(this)).build().inject(this);
 
-        presenter.getGirlItemData(String.valueOf(day),String.valueOf(month+1),String.valueOf(year));
+        presenter.getDayItemData(String.valueOf(day),String.valueOf(month+1),String.valueOf(year));
     }
 
     @Override
@@ -128,7 +126,7 @@ public class YandeActivity extends BaseMvpActivity
                 year = mCalendar.get(Calendar.YEAR);//获取年份
                 month = mCalendar.get(Calendar.MONTH);//获取月份
                 day = mCalendar.get(Calendar.DATE);//获取日
-                presenter.getGirlItemData(String.valueOf(day),String.valueOf(month+1),String.valueOf(year));
+                presenter.getDayItemData(String.valueOf(day),String.valueOf(month+1),String.valueOf(year));
             }
         });
 
@@ -138,7 +136,7 @@ public class YandeActivity extends BaseMvpActivity
             year = mCalendar.get(Calendar.YEAR);//获取年份
             month = mCalendar.get(Calendar.MONTH);//获取月份
             day= mCalendar.get(Calendar.DATE);//获取日
-            presenter.getGirlItemData(String.valueOf(day),String.valueOf(month +1),String.valueOf(year));
+            presenter.getDayItemData(String.valueOf(day),String.valueOf(month +1),String.valueOf(year));
 
         });
     }
