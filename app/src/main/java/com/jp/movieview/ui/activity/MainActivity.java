@@ -28,6 +28,7 @@ import com.jp.movieview.callback.JsonCallBack;
 import com.jp.movieview.ui.adapter.MainAdapter;
 import com.jp.movieview.ui.fragment.IndexCoimcsFragment;
 import com.jp.movieview.ui.fragment.KonachanFragment;
+import com.jp.movieview.ui.fragment.MGSFragment;
 import com.jp.movieview.ui.fragment.YandeFragment;
 import com.jp.movieview.utils.LogUtils;
 
@@ -342,6 +343,12 @@ public class MainActivity extends AppCompatActivity
 
 
 
+        }else if(id == R.id.nav_mgs & nowId!=R.id.nav_mgs){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_layout,new MGSFragment())
+                    .commit();
+            toolbar.setTitle("MGS動画");
+            nowId=R.id.nav_mgs;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

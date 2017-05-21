@@ -3,6 +3,7 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:checked="true"
             android:id="@+id/nav_yande"
             android:icon="@drawable/ic_menu_camera"
             android:title="Yande"/>
@@ -14,6 +15,13 @@
             android:id="@+id/nav_comic"
             android:icon="@drawable/ic_menu_send"
             android:title="2animx"/>
+
+        <item
+            android:checked="false"
+            android:id="@+id/nav_mgs"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="MGS動画"/>
+
         <item
             android:checked="false"
             android:id="@+id/nav_setting"
