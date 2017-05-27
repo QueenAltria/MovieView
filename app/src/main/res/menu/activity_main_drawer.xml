@@ -3,8 +3,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:checked="true"
             android:id="@+id/nav_yande"
+            android:checked="true"
             android:icon="@drawable/ic_menu_camera"
             android:title="Yande"/>
         <item
@@ -17,29 +17,37 @@
             android:title="2animx"/>
 
         <item
-            android:checked="false"
             android:id="@+id/nav_mgs"
-            android:icon="@drawable/ic_settings_black_24dp"
+            android:checked="false"
+            android:icon="@drawable/ic_menu_share"
             android:title="MGS動画"/>
 
+        <!--<item-->
+        <!--android:id="@+id/nav_setting"-->
+        <!--android:checked="false"-->
+        <!--android:icon="@drawable/ic_settings_black_24dp"-->
+        <!--android:title="设置"/>-->
+    </group>
+
+    <group>
         <item
-            android:checked="false"
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_settings_black_24dp"
             android:title="设置"/>
     </group>
 
+
     <!--<item android:title="Communicate">-->
-        <!--<menu>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_share"-->
-                <!--android:icon="@drawable/ic_menu_share"-->
-                <!--android:title="Share"/>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_send"-->
-                <!--android:icon="@drawable/ic_menu_send"-->
-                <!--android:title="Send"/>-->
-        <!--</menu>-->
+    <!--<menu>-->
+    <!--<item-->
+    <!--android:id="@+id/nav_share"-->
+    <!--android:icon="@drawable/ic_menu_share"-->
+    <!--android:title="Share"/>-->
+    <!--<item-->
+    <!--android:id="@+id/nav_send"-->
+    <!--android:icon="@drawable/ic_menu_send"-->
+    <!--android:title="Send"/>-->
+    <!--</menu>-->
     <!--</item>-->
 
 </menu>

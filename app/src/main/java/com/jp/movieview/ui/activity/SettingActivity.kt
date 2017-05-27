@@ -17,14 +17,11 @@ class SettingActivity : AppCompatActivity() {
     }
 
     fun initToolBar(){
-        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
         toolbar.title="设置"
-        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorWhite))
-
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary))
+       // toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.colorWhite))
         setSupportActionBar(toolbar)
-
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-
         toolbar.setNavigationOnClickListener { finish() }
     }
 }

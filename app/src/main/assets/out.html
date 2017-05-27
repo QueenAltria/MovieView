@@ -1,0 +1,888 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+            <meta name="Description" content="MGS動画でしか見られない独占アダルト動画を豊富に取り扱っています！なかでも人気のシロウトTV・ナンパTV・ラグジュTVは必見！最新のアダルト動画も充実な品ぞろえ！PC、スマートフォンでも視聴可能なアダルト動画が盛りだくさん！" />
+        
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+            <title>次世代アダルト動画サイト MGS動画</title>
+        <link href="http://www.mgstage.com/" rel="canonical" />
+    <link rel="stylesheet" href="/css/sp/style.css">
+
+            <link rel="stylesheet" href="/style/mgs/sp/base.min.css">
+                <link rel="stylesheet" href="/css/sp/non_isp.css" type="text/css">
+        <!--link rel="stylesheet" href="/style/common/non_isp.css" type="text/css"-->
+        <script src="/js/sp/jquery.min.js"></script>
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+    </script>
+    <script src="/js/sp/base.min.js"></script>
+    <script src="/js/sp/mgs_ad.js"></script>
+    <script type="text/javascript">
+        var analtitle='Alltop';
+        imobile_adv_sid = "5149";
+        imobile_adv_cq  = "top=1";
+        //非ログイン時削除
+        $(function(){
+            if(cookie_set['loginFlg']!=1){
+                $('.noLogin').remove();
+            }
+        })
+    </script>
+    <script src="/js/sp/adv.js"></script>
+    <script src="/js/sp/jquery.flexslider.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(window).load(function() {
+          $('.flexslider').flexslider();
+        });
+    </script>
+
+
+            <script src="/js/sp/search_suggest.js"></script>
+        <script src="/js/sp/suggest_list.js"></script>
+        <script src="/js/sp/suggest.js"></script>
+        <script src="/js/sp/search_keyword.js"></script>
+        <script type="text/javascript" charset="utf-8">
+        var flg = 0;
+        function toggleWordList() {
+            var element = document.getElementById("wordlist");
+            if (wordlist) {  // 変数wordlist に id="wordlist"の要素が入る
+                if (flg == 0) {
+                    wordlist.style.display = "inline";
+                    flg = 1;
+                } else {
+                    wordlist.style.display = "none";
+                    flg = 0;
+                }
+            }
+        }
+    </script>
+    <script src="/js/sp/ranking.js"></script>
+    <script src="/js/sp/ranking_all.js"></script>
+    <script src="/js/sp/ranking_siro.js"></script>
+    <script src="/js/sp/ranking_gana.js"></script>
+
+    
+    <script src="/js/sp/topacd.js"></script>
+    <script src="/js/sp/anal.js"></script>
+    <script src="/js/sp/jquery.cookie.js"></script>
+
+    
+    
+    
+    
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WDMR7D8');</script>
+    <!-- End Google Tag Manager -->
+
+
+    <!-- User Insight PCDF Code Start : mgstage.com -->
+    <script type="text/javascript">
+        <!--
+            
+                try {
+            
+            var uigr_1     = 'SP本サイト';
+            var uigr_2     = 'SP本サイト_フロント';
+            
+                var _uih   = _uih || {};
+                var _uic   = _uic || {};
+            
+            _uih['uigr_1'] = uigr_1;
+            _uih['uigr_2'] = uigr_2;
+            _uih['id']     = 50170;
+            
+            
+                (function() {
+                    var bi = document.createElement('scri'+'pt');bi.type = 'text/javascript'; bi.async = true;
+                    bi.src = ('https:' == document.location.protocol ? 'https://bs' : 'http://c') + '.nakanohito.jp/b3/bi.js';
+                    var s  = document.getElementsByTagName('scri'+'pt')[0];s.parentNode.insertBefore(bi, s);
+                })();
+                } catch(e) {
+                }
+            
+        //-->
+    </script>
+<!-- User Insight PCDF Code End : mgstage.com -->
+
+
+    </head>
+
+<body id="index" >
+    
+    <script>
+    
+    $('document').ready(function(){
+        var menuWidth = $('#slide_menu').outerWidth();
+        var body = $(document.body);
+        var header_btn = $('#header_menu');
+        var menu = $('#slide_menu');
+        var layer = $('.layer');
+        var current_scrollY;
+
+        header_btn.on('click', function(){
+            body.toggleClass('open');
+            if(body.hasClass('open')) {
+                current_scrollY = $(window).scrollTop();
+                body.css({
+                    overflow: 'hidden',
+                    position: 'absolute'
+                });
+                $('#container').css({
+                    position: 'fixed',
+                    width: '100%',
+                    top: -1 * current_scrollY,
+                    overflow: 'hidden'
+                });
+                menu.animate({'left' : 0}, 300);
+                layer.show();
+            }
+        });
+
+        layer.on('touchstart', function(event) {
+            closeMenu(event);
+        });
+        // Firefoxがtouchstartのイベントが発火しない
+        layer.on('click', function(event) {
+            closeMenu(event);
+        });
+        function closeMenu(event) {
+            event.preventDefault();
+            menu.animate({'left' : -menuWidth}, 300);
+            body.removeClass('open');
+            body.attr({style:''});
+            $('#container').attr({'style':''});
+            $('html, body').prop({scrollTop:current_scrollY});
+            layer.hide();
+        }
+    });
+    
+</script>
+
+
+
+<div class="layer">
+    <img class="close_btn" src="/img/sp/menu_close_btn.png">
+</div>
+
+<nav id="slide_menu">
+    <div id="menu_innner_wrapper">
+        <a class="theater_button pcmax_none" href="http://sp.mgstage.jp/">MGSシアター</a>
+            <dl class="icon">
+                                                            <dd>
+                                <a href="/mypage/mypage_purchasehist.php">
+                    <span><img src="/img/sp/menu_phist.png">商品購入履歴</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/cart/cart.php">
+                    <span><img src="/img/sp/menu_cart.png">カート</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/mypage/mypage_favorite.php">
+                    <span><img src="/img/sp/menu_favo.png">お気に入りリスト</span>
+                </a>
+            </dd>
+                    </dl>
+            <dl >
+            <dt>&#9660;メニューから探す</dt>                                                <dd>
+                                <a href="/search/search.php?monthly_limit=0&sort=popular&list_cnt=20&disp_type=col1">
+                    <span>全作品<br>人気順</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/general/pages/newlist_today.php?day=today">
+                    <span>本日の<br>新入荷</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/ranking/ranking.php?id=day">
+                    <span>MGS動画<br>ランキング</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/ranking/favorite_ranking.php?id=total">
+                    <span>お気に入り<br>ランキング</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=shirouto&amp;sort=new">
+                    <span><span class="label_red">MGS独占!</span>シロウトTV<br>商品を探す</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=nanpatv&amp;sort=new">
+                    <span><span class="label_red">MGS独占!</span>ナンパTV<br>商品を探す</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=luxutv&amp;sort=new">
+                    <span><span class="label_red">MGS独占!</span>ラグジュTV<br>商品を探す</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=ab8cd11d-2873-4b0b-8754-ec16b4fec028&amp;sort=popular">
+                    <span><span class="label_red">オススメ!</span>配信専用素人<br>商品を探す</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?sort=popular&price_range=-300">
+                    <span>300円以下の商品</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/general/pages/s_sale.php">
+                    <span>期間限定<br>セール</span>
+                </a>
+            </dd>
+                    </dl>
+            <dl class="no-icon">
+            <dt>&#9660;一覧から探す</dt>                                                <dd>
+                                <a href="/list/actress_list.php">
+                    <span>女優から探す</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/list/maker_list.php">
+                    <span>メーカーから探す</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/list/series_list.php">
+                    <span>シリーズから探す</span>
+                </a>
+            </dd>
+                    </dl>
+            <dl >
+            <dt>&#9660;人気ジャンルから探す</dt>                                                <dd>
+                                <a href="/search/search.php?image_word_ids%5B%5D=694e9f15-ff62-4ea9-a979-2e8ee747bc1e">
+                    <span>3P・4P</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=58bf0594-1498-4517-950d-558559814fb1">
+                    <span>巨乳</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=6d365998-7c06-4260-b8cd-78f2bfa4cab9">
+                    <span>ナンパ</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=fd068e37-c1be-4f9b-adf9-d8ab15c8682b">
+                    <span>熟女</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=fa1f06af-b2a2-4695-890d-2e10f9b90853">
+                    <span>中出し</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/search/search.php?image_word_ids[]=2cfda430-b995-43db-8b1f-aea8c0f61ac5">
+                    <span>人気女優</span>
+                </a>
+            </dd>
+                    </dl>
+            <dl class="icon">
+            <dt>&#9660;他のフロアから探す</dt>                                                <dd>
+                                <a href="/monthly/index.php">
+                    <span><img src="/img/sp/menu_monthly.png">月額見放題TOPへ</span>
+                </a>
+            </dd>
+                                                <dd>
+                                <a href="/anime/index.php">
+                    <span><img src="/img/sp/menu_anime.png">アダルトアニメTOPへ</span>
+                </a>
+            </dd>
+                                                <dd class="pcmax_none">
+                                <a href="/general/pages/reword_lp.php">
+                    <span><img src="/img/sp/menu_free_movie.png">無料動画TOPへ</span>
+                </a>
+            </dd>
+                    </dl>
+        </div>
+</nav>
+
+    <div id="container">
+        <header class="clearfix">
+            
+
+    <style>
+    #header_nav {
+        display: table;
+        height: 60px;
+        width: 100%;
+    }
+    #header_nav a,
+    #header_nav span {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        font-size: 10px;
+        color: #000;
+    }
+    #header_nav div{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    #header_logo a {
+        text-align: left;
+        margin-left: 5px;
+    }
+    #header_logo img {
+        height: 22px;
+        width: auto;
+    }
+    .header_btn {
+        width: 60px;
+    }
+    .header_btn img{
+        width: 30px;
+    }
+    .border_right {
+        border-right: #999 solid 1px;
+    }
+    .border_left {
+        border-left: #999 solid 1px;
+    }
+</style>
+<div id="header_nav" style="visibility: hidden;">
+    
+    <div id="header_menu" class="header_btn">
+        <a class="border_right">
+            <img src="/img/sp/hamburger.png">
+            <span>メニュー</span>
+        </a>
+    </div>
+    
+    <div id="header_logo">
+        <a href="/">
+            <img src="/img/sp/logo_mgs.gif" alt="MGS動画">
+        </a>
+            </div>
+
+    
+            <div class="status_login header_btn">
+            <a class="border_left" title="カートへ" href="/cart/cart.php">
+                <img src="/img/sp/cart.png">
+                <span>カートへ</span>
+            </a>
+        </div>
+        <div class="status_nologin header_btn pcmax_none">
+            <a class="border_left" title="新規登録" href="/joinleave/join.php">
+                <img src="/img/sp/icon_mypage.png">
+                <span>新規登録</span>
+            </a>
+        </div>
+            <div class="status_login header_btn">
+            <a class="border_left" title="マイページ" href="/mypage/mypage_top.php">
+                <img src="/img/sp/icon_mypage.png">
+                <span>マイページ</span>
+            </a>
+        </div>
+        <div class="status_nologin header_btn pcmax_none">
+            <a class="border_left" title="ログイン" href="/login/login.php">
+                <img src="/img/sp/hdr_login.png">
+                <span>ログイン</span>
+            </a>
+        </div>
+    </div>
+<script src="/js/common/header_api.js"></script>
+<script src="/js/common/convert_monthly_link.js"></script>
+<script>
+
+    $(function() {
+        HeaderInfo.load(HeaderInfo.SP, HeaderInfo.r18, $('#header_nav'), null, null, $('.status_login'), $('.status_nologin'));
+    });
+
+</script>
+
+<script src=/js/sp/scrollback_button.js></script>
+<p class="scrollback"><a>&#9650;</a></p>
+
+        </header>
+                            <hr class="red_border">
+                
+
+    <div id="suggest_area" class="suggest_area" style="display: none;"></div>
+    <div id="search_area" class="search_box">
+        <div id="search_parent" class="clearfix">
+            <div id="search_text">
+                <form class="search_ui_layout_01 clearfix" name="search_form" action="/search/search.php?search_word=" method="get" onsubmit="">
+                    <p class="keyword_box">
+                        <input id="search_input" class="input_keyword search_word" type="text" autocomplete="off" name="search_word" maxlength="100" value="" placeholder="検索ワード入力">
+                    </p>
+                    <p class="search_btn">
+                                                <input class="keywordSubmit" type="image" src="/img/sp/btn_search.gif" width="76" value="検索" name="send">
+                    </p>
+                </form>
+            </div>
+            <p class="other_Keyword"><a onclick="toggleWordList()" href="javascript:void(0)">注目ワード</a></p>
+        </div>
+        <dl id="wordlist" style="display: none;">
+            <div class="wordlist">
+                <table>
+                    <tr>
+                        <th>注目ワード</th>
+                        <td>
+                                                            <a href="/search/search.php?search_word=%E9%85%8D%E4%BF%A1%E5%B0%82%E7%94%A8%E7%B4%A0%E4%BA%BA">配信専用素人</a>
+                                                            <a href="/search/search.php?search_word=%E3%83%97%E3%83%AC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8">プレステージ</a>
+                                                            <a href="/search/search.php?search_word=%E7%B4%A0%E4%BA%BA">素人</a>
+                                                            <a href="/search/search.php?search_word=%E7%8B%AC%E5%8D%A0%E9%85%8D%E4%BF%A1">独占配信</a>
+                                                            <a href="/search/search.php?search_word=%E5%B7%A8%E4%B9%B3">巨乳</a>
+                                                            <a href="/search/search.php?search_word=%E3%82%B9%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC">スレンダー</a>
+                                                            <a href="/search/search.php?search_word=%E3%83%87%E3%83%93%E3%83%A5%E3%83%BC%E4%BD%9C%E5%93%81">デビュー作品</a>
+                                                            <a href="/search/search.php?search_word=%E4%BA%BA%E5%A6%BB">人妻</a>
+                                                            <a href="/search/search.php?search_word=%E4%B8%AD%E5%87%BA%E3%81%97">中出し</a>
+                                                            <a href="/search/search.php?search_word=ARA">ARA</a>
+                                                            <a href="/search/search.php?search_word=%E3%82%A8%E3%82%B9%E3%83%86%E3%83%BB%E3%83%9E%E3%83%83%E3%82%B5%E3%83%BC%E3%82%B8">エステ・マッサージ</a>
+                                                    </td>
+                    </tr>
+                </table>
+            </div>
+        </dl>
+    </div>
+
+        <div id="content">
+                        <div class="flexslider loading" style="visibility: visible;">
+    <ul class="slides">
+                            <li><a href="/general/pages/news/iemadeokutte58_lp"><img src="/img/sp/slideshow/sp_new_iemadeokutte58.jpg"></a></li>
+                                    <li><a href="/ppv/ppv_advanced.php"><img src="/img/sp/slideshow/sp_170518_senkou_TOP.jpg"></a></li>
+                                    <li><a href="/howto/howto_chromecast.php"><img src="/img/sp/slideshow/sp_chromecast_170418.jpg"></a></li>
+                                    <li><a href="/howto/howto_aboutpoint.php"><img src="/img/sp/slideshow/sp_point_small_.jpg"></a></li>
+                                    <li><a href="/general/pages/rewords.php"><img src="/img/sp/slideshow/sp_reward_lp_small.jpg"></a></li>
+                    </ul>
+</div>
+
+
+
+                
+        <h2 class="clearfix" style="background-color: #dcdcdc; margin-top: 5px">MGS動画 人気作品<span style="font-size:11px;">(1時間毎に更新)</span></h2>
+<ul class="top_photo_list clearfix" style="padding: 0">
+            <li>
+            <a href="/product/product_detail/SP-ABP-589">
+                                    <img width="70" alt="絶対的鉄板シチュエーション 4 凰かなめ 【MGSだけの特典映像付】 +15分" src="http://spimg2.mgstage.com/images/prestige/sp/abp/589/h1-04_sp-abp-589.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-277DCV-058">
+                                    <img width="70" alt="家まで送ってイイですか？ case.58 黄金比ボディを持つバツイチGカップ公務員⇒美白美巨乳～Gカップパイズリ天国～⇒性欲:強！離婚後10人の野郎を自宅に連れ込む⇒どんな時でも前を向くポジティブなオンナ⇒軟禁？過酷な結婚生活を明るく語る。" src="http://spimg2.mgstage.com/images/documentv/sp/277dcv/058/h1-04_sp-277dcv-058.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-277DCV-052">
+                                    <img width="70" alt="家まで送ってイイですか？ case.52 秋田美人の巨乳DJはGカップでフロアを揺らす！！『フルート一筋の18年間…遊びも恋もしませんでした』⇒反逆のパリピ大学デビュー⇒合コン即ヤリ肉食ガール⇒巨乳を武器に酒池肉林！！⇒ゲス過ぎる芸能スキャンダル…あの有名アイドルも、あのお笑い芸人も！？" src="http://spimg2.mgstage.com/images/documentv/sp/277dcv/052/h1-04_sp-277dcv-052.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-077ABF-079">
+                                    <img width="70" alt="フェラチオ専用娘 川村まや" src="http://spimg2.mgstage.com/images/eiten/sp/077abf/079/h1-04_sp-077abf-079.jpg">
+                            </a>
+        </li>
+    </ul>
+<div class="more" style="font-size: 14px; font-weight: bold; padding: 10px 0 10px 0;">
+    <a href="/ranking/ranking.php?id=popular">人気作品を全て見る ＞</a>
+</div>
+
+                
+        <h2 class="clearfix" style="background-color: #dcdcdc; margin-top: 5px;">
+    シロウトTV人気作品 <span style="font-size:11px;">(1時間毎に更新)</span></h2>
+<ul class="top_photo_list clearfix" style="padding: 0">
+            <li>
+            <a href="/product/product_detail/SP-SIRO-2982/">
+                                    <img width="70" alt="【初撮り】ネットでAV応募→AV体験撮影 298" src="http://spimg2.mgstage.com/images/shirouto/sp/siro/2982/h1-04_sp-siro-2982.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-SIRO-2629/">
+                                    <img width="70" alt="初々418" src="http://spimg2.mgstage.com/images/shirouto/sp/siro/2629/h1-04_sp-siro-2629.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-SIRO-2450/">
+                                    <img width="70" alt="素人個人撮影、投稿。723" src="http://spimg2.mgstage.com/images/shirouto/sp/siro/2450/h1-04_sp-siro-2450.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-SIRO-2314/">
+                                    <img width="70" alt="初撮りOL 05" src="http://spimg2.mgstage.com/images/shirouto/sp/siro/2314/h1-04_sp-siro-2314.jpg">
+                            </a>
+        </li>
+    </ul>
+<div class="more" style="font-size: 14px; font-weight: bold; padding: 10px 0 10px 0">
+    <a href="/ranking/ranking.php?id=shiroutotv_popular">人気作品を全て見る ＞</a>
+</div>
+
+                
+        <h2 class="clearfix" style="background-color: #dcdcdc; margin-top: 5px;">
+    ナンパTV人気作品<span style="font-size:11px;">(1時間毎に更新)</span></h2>
+<ul class="top_photo_list clearfix" style="padding: 0">
+            <li>
+            <a href="/product/product_detail/SP-200GANA-1367/">
+                                    <img width="70" alt="百戦錬磨のナンパ師のヤリ部屋で、連れ込みSEX隠し撮り 05" src="http://spimg2.mgstage.com/images/nanpatv/sp/200gana/1367/h1-04_sp-200gana-1367.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-200GANA-1349/">
+                                    <img width="70" alt="マジ軟派、初撮。 822 in 御茶ノ水" src="http://spimg2.mgstage.com/images/nanpatv/sp/200gana/1349/h1-04_sp-200gana-1349.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-200GANA-1356/">
+                                    <img width="70" alt="マジ軟派、初撮。 828" src="http://spimg2.mgstage.com/images/nanpatv/sp/200gana/1356/h1-04_sp-200gana-1356.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-200GANA-1336/">
+                                    <img width="70" alt="フットサルナンパ 01 in 代々木" src="http://spimg2.mgstage.com/images/nanpatv/sp/200gana/1336/h1-04_sp-200gana-1336.jpg">
+                            </a>
+        </li>
+    </ul>
+<div class="more" style="font-size: 14px; font-weight: bold; padding: 10px 0 10px 0">
+    <a href="/ranking/ranking.php?id=nanpatv_popular">人気作品を全て見る ＞</a>
+</div>
+
+                
+        <h2 class="clearfix" style="background-color: #dcdcdc; margin-top: 5px;">
+    ラグジュTV人気作品<span style="font-size:11px;">(1時間毎に更新)</span></h2>
+<ul class="top_photo_list clearfix" style="padding: 0">
+            <li>
+            <a href="/product/product_detail/SP-259LUXU-652/">
+                                    <img width="70" alt="ラグジュTV 666" src="http://spimg2.mgstage.com/images/luxutv/sp/259luxu/652/h1-04_sp-259luxu-652.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-259LUXU-662/">
+                                    <img width="70" alt="ラグジュTV 665" src="http://spimg2.mgstage.com/images/luxutv/sp/259luxu/662/h1-04_sp-259luxu-662.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-259LUXU-683/">
+                                    <img width="70" alt="ラグジュTV 664" src="http://spimg2.mgstage.com/images/luxutv/sp/259luxu/683/h1-04_sp-259luxu-683.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-259LUXU-648/">
+                                    <img width="70" alt="ラグジュTV 658" src="http://spimg2.mgstage.com/images/luxutv/sp/259luxu/648/h1-04_sp-259luxu-648.jpg">
+                            </a>
+        </li>
+    </ul>
+<div class="more" style="font-size: 14px; font-weight: bold; padding: 10px 0 10px 0">
+    <a href="/ranking/ranking.php?id=luxutv_popular">人気作品を全て見る ＞</a>
+</div>
+
+                
+        <h2 class="clearfix" style="background-color: #dcdcdc; margin-top: 5px;">
+    プレステージプレミアム人気作品<span style="font-size:11px;">(1時間毎に更新)</span></h2>
+<ul class="top_photo_list clearfix" style="padding: 0">
+            <li>
+            <a href="/product/product_detail/SP-300MIUM-006/">
+                                    <img width="70" alt="噂の検証！「あなたの恋バナ聞かせてください！」 episode.5 ハメては別れを繰り返し、経験人数数千人の艶女⇒巨根堕ちのなし崩し中出しセックス！？ in お台場" src="http://spimg2.mgstage.com/images/prestigepremium/sp/300mium/006/h1-04_sp-300mium-006.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-300MIUM-048/">
+                                    <img width="70" alt="噂の検証！「地方から来たカワイイ田舎娘はヤレるのか？」 episode.11 ウブなのかエロなのか！？七変化コスプレイヤーの本性はドッチ！？ in 東京駅" src="http://spimg2.mgstage.com/images/prestigepremium/sp/300mium/048/h1-04_sp-300mium-048.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-300MIUM-078/">
+                                    <img width="70" alt="街行くセレブ人妻をナンパしてAV自宅撮影！⇒中出し性交！ celeb.24 汚いち○ぽに慣れている？！旦那の性癖を優先してきた美人奥様、他人棒でセルフ処理を卒業する。の巻 in 目白" src="http://spimg2.mgstage.com/images/prestigepremium/sp/300mium/078/h1-04_sp-300mium-078.jpg">
+                            </a>
+        </li>
+            <li>
+            <a href="/product/product_detail/SP-300MIUM-072/">
+                                    <img width="70" alt="絶対的鉄板シチュエーション 男の妄想、完全再現！ Situation.3 『宅配先のお宅にお風呂上がり美少女！？お尻フリフリの誘惑に耐えきれずつい勃ってしまい・・・。』 凰かなめ" src="http://spimg2.mgstage.com/images/prestigepremium/sp/300mium/072/h1-04_sp-300mium-072.jpg">
+                            </a>
+        </li>
+    </ul>
+<div class="more" style="font-size: 14px; font-weight: bold; padding: 10px 0 10px 0">
+    <a href="/ranking/ranking.php?id=prestigepremium_popular">人気作品を全て見る ＞</a>
+</div>
+
+                
+        <h2 class="clearfix"  style="background-color: #dcdcdc">本日のピックアップ作品</h2>
+<ul class="top_photo_list clearfix">
+            <li>
+            <style>
+                ul.top_photo_list li p.color0 {
+                    color: #fff;                    background-color: #fe0096;                    visibility: visible;
+                }
+                ul.top_photo_list li p.color0:after {
+                    border-color: #fe0096 transparent transparent;
+                }
+            </style>
+            <p class="icon-comment color0">独占配信！</p>
+            <a href="/product/product_detail/SP-300MIUM-048">
+                                    <img width="70" alt="噂の検証！「地方から来たカワイイ田舎娘はヤレるのか？」 episode.11 ウブなのかエロなのか！？七変化コスプレイヤーの本性はドッチ！？ in 東京駅" src="http://spimg2.mgstage.com/images/prestigepremium/sp/300mium/048/h1-04_sp-300mium-048.jpg">
+                            </a>
+        </li>
+            <li>
+            <style>
+                ul.top_photo_list li p.color1 {
+                    color: #fff;                    background-color: #fe0096;                    visibility: visible;
+                }
+                ul.top_photo_list li p.color1:after {
+                    border-color: #fe0096 transparent transparent;
+                }
+            </style>
+            <p class="icon-comment color1">独占配信！</p>
+            <a href="/product/product_detail/SP-277DCV-058">
+                                    <img width="70" alt="家まで送ってイイですか？ case.58 黄金比ボディを持つバツイチGカップ公務員⇒美白美巨乳～Gカップパイズリ天国～⇒性欲:強！離婚後10人の野郎を自宅に連れ込む⇒どんな時でも前を向くポジティブなオンナ⇒軟禁？過酷な結婚生活を明るく語る。" src="http://spimg2.mgstage.com/images/documentv/sp/277dcv/058/h1-04_sp-277dcv-058.jpg">
+                            </a>
+        </li>
+            <li>
+            <style>
+                ul.top_photo_list li p.color2 {
+                    color: #fff;                    background-color: #fe0096;                    visibility: visible;
+                }
+                ul.top_photo_list li p.color2:after {
+                    border-color: #fe0096 transparent transparent;
+                }
+            </style>
+            <p class="icon-comment color2">人気作品！</p>
+            <a href="/product/product_detail/SP-AKA-037">
+                                    <img width="70" alt="シロウト制服美人 07" src="http://spimg2.mgstage.com/images/prestige/sp/aka/037/h1-04_sp-aka-037.jpg">
+                            </a>
+        </li>
+            <li>
+            <style>
+                ul.top_photo_list li p.color3 {
+                    color: #fff;                    background-color: #fe0096;                    visibility: visible;
+                }
+                ul.top_photo_list li p.color3:after {
+                    border-color: #fe0096 transparent transparent;
+                }
+            </style>
+            <p class="icon-comment color3">独占配信！</p>
+            <a href="/product/product_detail/SP-259LUXU-683">
+                                    <img width="70" alt="ラグジュTV 664" src="http://spimg2.mgstage.com/images/luxutv/sp/259luxu/683/h1-04_sp-259luxu-683.jpg">
+                            </a>
+        </li>
+    </ul>
+                
+        <h1></h1>
+        <a href="/list/dokusen_list/"><img class="resize_image" style="width:90%;" alt="MGS独占配信" src="/img/sp/slideshow/sp_mgs_dokusen_170220.jpg"></a>
+    
+                
+        <h2>MGS人気ジャンル一覧</h2>
+<ul class="genre_menu clearfix">
+            <li><a href="/search/search.php?image_word_ids%5B%5D=58bf0594-1498-4517-950d-558559814fb1">巨乳</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=2240f7a1-33b1-4728-9866-e419385dcadc">人妻</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=91cd4a23-efd3-4177-8d7a-ae0cdf3626ff">企画</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=ab8cd11d-2873-4b0b-8754-ec16b4fec028">配信専用素人</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=845a7170-9f5d-44ae-be31-c7112db3973d">女子校生</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=fa1f06af-b2a2-4695-890d-2e10f9b90853">中出し</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=56b21161-bbad-4aca-9493-85cc81bf830e">素人</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=4f4bdf99-9659-4c27-a1c1-59c59bf7587c">単体作品</a></li>
+            <li><a href="/search/search.php?image_word_ids%5B%5D=694e9f15-ff62-4ea9-a979-2e8ee747bc1e">3P・4P</a></li>
+    </ul>
+<p class="genre_more" style="padding-bottom:20px;"><a href="/list/genre_list.php?kana=push">すべてのジャンルから探す&nbsp;&gt;</a></p>
+                
+        <h1></h1>
+        <a href="/general/pages/s_sale.php"><img class="resize_image" style="width:90%;" alt="セール一覧" src="/img/sp/slideshow/sp_slide_SALE_170519.jpg"></a>
+    
+                
+            <h2>メニューから探す</h2>
+        <ul class="all_list_menu clearfix">
+                    <li class=""
+                            >
+                <a href="/search/search.php?monthly_limit=0&sort=popular&list_cnt=20&disp_type=col1">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_ninki.png"></figure>
+                                        <span class="menu_text">全作品<br>人気順</span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/general/pages/newlist_today.php?day=today">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_new.png"></figure>
+                                        <span class="menu_text">本日の<br>新入荷</span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/ranking/ranking.php?id=day">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_rank.png"></figure>
+                                        <span class="menu_text">MGS動画<br>ランキング</span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/ranking/favorite_ranking.php?id=total">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_okini.png"></figure>
+                                        <span class="menu_text">お気に入り<br>ランキング</span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/search/search.php?image_word_ids[]=shirouto&amp;sort=new">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_siro.png"></figure>
+                                        <span class="menu_text"><span class="red small_font">MGS独占!</span>シロウトTV<br>商品を探す<br></span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/search/search.php?image_word_ids[]=nanpatv&amp;sort=new">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_gana.png"></figure>
+                                        <span class="menu_text"><span class="red small_font">MGS独占!</span>ナンパTV<br>商品を探す<br></span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/search/search.php?image_word_ids[]=luxutv&amp;sort=new">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_lux.png"></figure>
+                                        <span class="menu_text"><span class="red small_font">MGS独占!</span>ラグジュTV<br>商品を探す<br></span>
+                </a>
+            </li>
+                    <li class=""
+                            >
+                <a href="/general/pages/shirouto_photo.php">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_haishinsenyou.png"></figure>
+                                        <span class="menu_text"><span class="red">超人気!!</span>素人女子!</span>
+                </a>
+            </li>
+                    <li class="yellow_bg"
+                            >
+                <a href="/search/search.php?search_word=nakadashi_sale_0519&monthly_limit=0&sort=popular&list_cnt=20&disp_type=col1&is_sales=1&event_name=nakadashi_sale_0519">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_sale.png"></figure>
+                                        <span class="menu_text"><span class="red">期間限定！</span>中出し<br>SALE！！</span>
+                </a>
+            </li>
+                    <li class="yellow_bg"
+                            >
+                <a href="/search/search.php?is_sales=1&event_name=skyu_sale_0519">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_sale.png"></figure>
+                                        <span class="menu_text"><span class="red">期間限定！</span>S級素人<br>SALE！！</span>
+                </a>
+            </li>
+                    <li class="yellow_bg"
+                            >
+                <a href="/general/pages/news/teppan_sale_0519/">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_sale.png"></figure>
+                                        <span class="menu_text"><span class="red">期間限定！</span>鉄板<br>SALE！！</span>
+                </a>
+            </li>
+                    <li class="yellow_bg"
+                            >
+                <a href="/search/search.php?is_sales=1&event_name=60off_sale_170519">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_sale.png"></figure>
+                                        <span class="menu_text"><span class="red">期間限定！</span>60%OFF<br>SALE！！</span>
+                </a>
+            </li>
+            </ul>
+    <h2>一覧から探す</h2>
+        <ul class="all_list_menu clearfix">
+                    <li class=" column_one"
+                            >
+                <a href="/list/actress_list.php">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_jyoyu.png"></figure>
+                                        <span class="menu_text">女優から探す</span>
+                </a>
+            </li>
+                    <li class=" column_one"
+                            >
+                <a href="/list/maker_list.php">
+                                            <figure><img width="40"  src="/img/sp/icon_makerlist.gif"></figure>
+                                        <span class="menu_text">メーカーで探す</span>
+                </a>
+            </li>
+                    <li class=" column_one"
+                            >
+                <a href="/list/series_list.php">
+                                            <figure><img width="40"  src="/img/sp/series_list.png"></figure>
+                                        <span class="menu_text">シリーズで探す</span>
+                </a>
+            </li>
+            </ul>
+    <h2>他のフロアから探す</h2>
+        <ul class="all_list_menu clearfix">
+                    <li class="yellow_bg column_one"
+                            >
+                <a href="/monthly/index.php">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_mihoudai.png"></figure>
+                                        <span class="menu_text">月額見放題TOPへ</span>
+                </a>
+            </li>
+                    <li class=" column_one"
+                            >
+                <a href="/anime/index.php">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_anime.png"></figure>
+                                        <span class="menu_text"><span class="red small_font">二次元エロス</span>アダルトアニメTOPへ</span>
+                </a>
+            </li>
+                    <li class="pcmax_none column_one"
+                            >
+                <a href="/general/pages/reword_lp.php">
+                                            <figure><img width="40"  src="/img/sp/sp_icon_freemovie.png"></figure>
+                                        <span class="menu_text">無料動画TOPへ</span>
+                </a>
+            </li>
+            </ul>
+
+                
+        <h1></h1>
+        <a href="/general/pages/2016_allranking_list.php"><img class="resize_image" style="width:90%;" alt="2016年間ランキング" src="/img/sp/slideshow/sp_2016_ranking.jpg"></a>
+    
+                
+        <h1></h1>
+        <a href="http://sp.mgstage.jp/#new_payment"target="_blank"><img class="resize_image" style="width:90%;" alt="キャリア決済" src="/img/sp/sp_to_theater_Carrier_au_soft.jpg"></a>
+    
+                
+        <h3 class="isp_none pcmax_none">お支払方法は以下の中からお選びいただけます。</h3>
+<ul class="cash_menu clearfix isp_none pcmax_none">
+            <li><a href="/support/credit.php"><img src="/img/sp/sp_pay_credit.jpg" alt="クレジット決済" width="100%"></a></li>
+            <li><a href="/support/bitcash.php#bitcash"><img src="/img/sp/sp_pay_bitcash.jpg" alt="ビットキャッシュ" width="100%"></a></li>
+            <li><a href="/support/convenience_payment.php"><img src="/img/sp/sp_pay_conbini.jpg" alt="コンビニ決済" width="100%"></a></li>
+            <li><a href="/support/ccheck.php"><img src="/img/sp/sp_pay_Ccheck.jpg" alt="C-CHECK決済" width="100%"></a></li>
+            <li><a href="/inquiry/faq_answer.php?id=save4-4"><img src="/img/sp/sp_pay_BANK.jpg" alt="銀行振込" width="100%"></a></li>
+            <li><a href="/inquiry/faq_answer.php?id=save4-4"><img src="/img/sp/sp_pay_netbank.jpg" alt="ネットバンク決済" width="100%"></a></li>
+    </ul>
+                
+        <h1></h1>
+        <a href="https://docs.google.com/forms/d/1aL26-LQbaZYyE9kdRbrwk8zlqfT23I8VpAL77jgSnjI/viewform"target="_blank"><img class="resize_image" style="width:90%;" alt="目安箱" src="/img/sp/sp_meyasuBOX.jpg"></a>
+    
+    
+        </div>
+        <footer>
+            <article id="foot_info">
+                <h3>サポート</h3>
+<ul class="support_menu clearfixs">
+                        <li><a href="/inquiry/faq_index.php">&#9654;よくある質問(Q&amp;A)</a></li>
+                                <li><a href="/howto/howto_A_0.php">&#9654;MGS動画サイトについて(初めての方へ)</a></li>
+                                <li><a href="/howto/howto_mgsplayer_app_dl_android.php">&#9654;MGS PLAYERアプリ(for Android)</a></li>
+                                <li><a href="/howto/howto_A_3.php">&#9654;動画を見るには？</a></li>
+                                <li><a href="/howto/howto_chromecast.php">&#9654;Chromecastについて</a></li>
+                                <li><a href="/general/pages/rewords.php">&#9654;ポイントを貯めて動画をGET</a></li>
+                                <li><a href="/howto/howto_carrier.php">&#9654;対応機種について</a></li>
+                                <li><a href="/sitemap/index.php">&#9654;サイトマップ</a></li>
+                                <li><a href="/inquiry/start.php">&#9654;お問い合わせ</a></li>
+            </ul>
+<dl>
+            <dt class="isp_none pcmax_none">
+            <a href="http://sp.mgstage.jp/?form=sp_mgs_helplink_theater_front">・MGSシアター</a>
+        </dt>
+                            <dd>
+                                    <a href="/privacy/index.php">・個人情報保護方針</a>
+                            </dd>
+                    <dd>
+                                    <a href="/agreement/index.php">・利用規約</a>
+                            </dd>
+                    <dd>
+                                    <a href="/declare/index.php">・運営者情報</a>
+                            </dd>
+            </dl>
+<p><small>Copyright Media Global Stage Co.Ltd All rights reserved.</small></p>
+
+            </article>
+        </footer>
+    </div>
+</body>
+</html>

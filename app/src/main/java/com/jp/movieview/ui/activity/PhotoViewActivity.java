@@ -1,5 +1,6 @@
 package com.jp.movieview.ui.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
@@ -303,6 +304,14 @@ public class PhotoViewActivity extends BaseMvpActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         ToastUtils.showToast(this,item.getTitle().toString());
+        if(item.getItemId()==R.id.action_save){
+
+        }else {
+            Intent intent=new Intent(this,TagActivity.class);
+            intent.putExtra("tag",item.getTitle().toString());
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

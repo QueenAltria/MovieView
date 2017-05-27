@@ -81,4 +81,21 @@ public class YandeItemPresenter extends BasePresenter<YandeItemView> {
                             }
                         });
     }
+
+
+    public void getTagItemData(String page,String tags) {
+        mSubscription = RxManager.getInstance()
+                .doSubscribe(ApiService.getInstance().initService(YandeService.class).getTagData(page,tags),
+                        new RxSubscriber<String>(false) {
+                            @Override
+                            protected void _onNext(String s) {
+                                mView.onSuccess(Code.YANDE_CODE,JsoupUtil.parseYandeData(s));
+                            }
+
+                            @Override
+                            protected void _onError() {
+                                mView.onError();
+                            }
+                        });
+    }
 }

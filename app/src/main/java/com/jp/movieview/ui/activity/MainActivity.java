@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -50,6 +51,8 @@ import okhttp3.Call;
 import okhttp3.Response;
 import okhttp3.internal.http2.Header;
 
+import static android.R.attr.id;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,BaseQuickAdapter.RequestLoadMoreListener {
@@ -75,8 +78,13 @@ public class MainActivity extends AppCompatActivity
 
     YandeFragment mYandeFragment;
     IndexCoimcsFragment mIndexCoimcsFragment;
+    KonachanFragment mKonachanFragment;
+    MGSFragment mMGSFragment;
 
     int nowId=R.id.nav_yande;
+    int flagId;
+
+    FragmentTransaction transaction;
 
 
 
@@ -93,7 +101,9 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setTitle("Yande");
 
         mYandeFragment=new YandeFragment();
-        mIndexCoimcsFragment=new IndexCoimcsFragment();
+
+        transaction=getSupportFragmentManager().beginTransaction();
+
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.content_layout,mYandeFragment)
@@ -235,6 +245,109 @@ public class MainActivity extends AppCompatActivity
 
         mHeadWeb.loadUrl("file:///android_asset/index.html");
 
+
+
+
+
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                switch (flagId){
+                    case R.id.nav_yande:
+                        if (nowId!=R.id.nav_yande){
+                            transaction=getSupportFragmentManager().beginTransaction();
+                            hideFragments( transaction);
+
+                            transaction
+                                    .show(mYandeFragment)
+                                    .commit();
+                            toolbar.setTitle("Yande");
+                            nowId=R.id.nav_yande;
+                        }
+                        break;
+                    case R.id.nav_konachan:
+                        if(nowId!=R.id.nav_konachan){
+                            transaction=getSupportFragmentManager().beginTransaction();
+                            hideFragments( transaction);
+                            if(mKonachanFragment==null){
+                                mKonachanFragment= new KonachanFragment();
+                                transaction
+                                        .add(R.id.content_layout,mKonachanFragment)
+                                ;
+                            }else {
+                                transaction
+                                        .show(mKonachanFragment)
+                                ;
+                            }
+
+                            transaction.commit();
+
+                            toolbar.setTitle("Konachan");
+                            nowId=R.id.nav_konachan;
+                        }
+                        break;
+                    case R.id.nav_comic:
+                        if(nowId!=R.id.nav_comic){
+                            transaction=getSupportFragmentManager().beginTransaction();
+                            hideFragments( transaction);
+                            if(mIndexCoimcsFragment==null){
+                                mIndexCoimcsFragment=new IndexCoimcsFragment();
+                                transaction
+                                        .add(R.id.content_layout,mIndexCoimcsFragment)
+                                        .commit();
+                            }else {
+                                transaction
+                                        .show(mIndexCoimcsFragment)
+                                        .commit();
+                            }
+
+                            toolbar.setTitle("2animx");
+                            nowId=R.id.nav_comic;
+                        }
+                        break;
+                    case R.id.nav_mgs:
+                        if (nowId!=R.id.nav_mgs){
+                            transaction=getSupportFragmentManager().beginTransaction();
+                            hideFragments(transaction);
+                            if(mMGSFragment==null){
+                                mMGSFragment=new MGSFragment();
+                                transaction
+                                        .add(R.id.content_layout,mMGSFragment)
+                                        .commit();
+                            }else {
+                                transaction
+                                        .show(mMGSFragment)
+                                        .commit();
+                            }
+
+
+                            toolbar.setTitle("MGS動画");
+                            nowId=R.id.nav_mgs;
+                        }
+                        break;
+                    case R.id.nav_setting:
+                        Intent intent=new Intent(MainActivity.this,SettingActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+
         // 简单快速的实现方法，内部使用AsyncTask
 // 但是可能不是最优的方法(因为有线程的切换)
 // 默认调色板大小(16).
@@ -310,46 +423,86 @@ public class MainActivity extends AppCompatActivity
 //        }
     }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_yande & nowId!=R.id.nav_yande) {
-            // Handle the camera action
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_layout,new YandeFragment())
-                    .commit();
-            toolbar.setTitle("Yande");
-            nowId=R.id.nav_yande;
-        } else if (id == R.id.nav_konachan & nowId!=R.id.nav_konachan) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_layout,new KonachanFragment())
-                    .commit();
-            toolbar.setTitle("Konachan");
-            nowId=R.id.nav_konachan;
-        } else if (id == R.id.nav_comic & nowId!=R.id.nav_comic) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_layout,mIndexCoimcsFragment)
-                    .commit();
-            toolbar.setTitle("2animx");
-            nowId=R.id.nav_comic;
+        flagId=item.getItemId();
 
-        } else if (id == R.id.nav_setting & nowId!=R.id.nav_setting) {
-
-            Intent intent=new Intent(this,SettingActivity.class);
-            startActivity(intent);
-
-
-
-        }else if(id == R.id.nav_mgs & nowId!=R.id.nav_mgs){
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.content_layout,new MGSFragment())
-                    .commit();
-            toolbar.setTitle("MGS動画");
-            nowId=R.id.nav_mgs;
-        }
+//        if (id == R.id.nav_yande & nowId!=R.id.nav_yande) {
+//            // Handle the camera action
+//            transaction=getSupportFragmentManager().beginTransaction();
+//            hideFragments( transaction);
+//
+//            transaction
+//                    .show(mYandeFragment)
+//                    .commit();
+//            toolbar.setTitle("Yande");
+//            nowId=R.id.nav_yande;
+//        } else if (id == R.id.nav_konachan & nowId!=R.id.nav_konachan) {
+//            transaction=getSupportFragmentManager().beginTransaction();
+//            hideFragments( transaction);
+//            if(mKonachanFragment==null){
+//                mKonachanFragment= new KonachanFragment();
+//                transaction
+//                        .add(R.id.content_layout,mKonachanFragment)
+//                        ;
+//            }else {
+//                transaction
+//                        .show(mKonachanFragment)
+//                       ;
+//            }
+//
+//            transaction.commit();
+//
+//            toolbar.setTitle("Konachan");
+//            nowId=R.id.nav_konachan;
+//        } else if (id == R.id.nav_comic & nowId!=R.id.nav_comic) {
+//            transaction=getSupportFragmentManager().beginTransaction();
+//            hideFragments( transaction);
+//            if(mIndexCoimcsFragment==null){
+//                mIndexCoimcsFragment=new IndexCoimcsFragment();
+//                transaction
+//                        .add(R.id.content_layout,mIndexCoimcsFragment)
+//                        .commit();
+//            }else {
+//                transaction
+//                        .show(mIndexCoimcsFragment)
+//                        .commit();
+//            }
+//
+//            toolbar.setTitle("2animx");
+//            nowId=R.id.nav_comic;
+//
+//        } else if (id == R.id.nav_setting & nowId!=R.id.nav_setting) {
+//
+//            Intent intent=new Intent(this,SettingActivity.class);
+//            startActivity(intent);
+//
+//
+//
+//        }else if(id == R.id.nav_mgs & nowId!=R.id.nav_mgs){
+//            transaction=getSupportFragmentManager().beginTransaction();
+//            hideFragments(transaction);
+//            if(mMGSFragment==null){
+//                mMGSFragment=new MGSFragment();
+//                transaction
+//                        .add(R.id.content_layout,mMGSFragment)
+//                        .commit();
+//            }else {
+//                transaction
+//                        .show(mMGSFragment)
+//                        .commit();
+//            }
+//
+//
+//            toolbar.setTitle("MGS動画");
+//            nowId=R.id.nav_mgs;
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -467,6 +620,29 @@ public class MainActivity extends AppCompatActivity
                     adapter.loadMoreFail();
                 }
             }
+        }
+    }
+
+
+    /**
+     * 将所有的Fragment都置为隐藏状态。
+     *
+     * @param transaction
+     *            用于对Fragment执行操作的事务
+     */
+    private void hideFragments(FragmentTransaction transaction) {
+
+        if (mYandeFragment != null) {
+            transaction.hide(mYandeFragment);
+        }
+        if (mKonachanFragment != null) {
+            transaction.hide(mKonachanFragment);
+        }
+        if (mIndexCoimcsFragment != null) {
+            transaction.hide(mIndexCoimcsFragment);
+        }
+        if (mMGSFragment != null) {
+            transaction.hide(mMGSFragment);
         }
     }
 

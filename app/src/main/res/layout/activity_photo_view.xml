@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorTrans"
-    app:dragDismissDistance="112dp"
+    app:dragDismissDistance="200dp"
     app:dragDismissScale="0.95"
     tools:context="com.jp.movieview.ui.activity.PhotoViewActivity">
 

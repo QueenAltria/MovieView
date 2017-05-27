@@ -43,6 +43,8 @@ public interface YandeService {
     Observable<String> getTagData(@Query("page") String page,
                                   @Query("tags") String tags);
 
+
+
     @GET("post/popular_by_day?day={day}&month={month}&year={year}")
     Observable<String> getYandePopularData(@Path("day") String day,
                                            @Path("month") String month,
